@@ -1,4 +1,10 @@
-from time import sleep
+print('Carregando...')
 
-if __name__ == "__main__":
-    print("Hello, World!")
+from AItranslater import *
+from DialoGPT import *
+
+print('Carregado!')
+
+while 1:
+    print(translateFromEN(dialoGPT(translateToEN(input('Usuário: ')))))
+    input('Pressione qualquer tecla pra continuar')

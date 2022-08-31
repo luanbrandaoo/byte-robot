@@ -1,7 +1,7 @@
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-tokenizer = AutoTokenizer.from_pretrained("microsoft/DialoGPT-large")
-model = AutoModelForCausalLM.from_pretrained("microsoft/DialoGPT-large")
+tokenizer = AutoTokenizer.from_pretrained("microsoft/DialoGPT-large", cache_dir=".cache/")
+model = AutoModelForCausalLM.from_pretrained("microsoft/DialoGPT-large", cache_dir=".cache/")
 
 def dialoGPT(inputMsg):
     new_user_input_ids = tokenizer.encode(str(inputMsg) + tokenizer.eos_token, return_tensors='pt')
