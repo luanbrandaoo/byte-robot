@@ -13,6 +13,7 @@ def translateToEN(input):
     return tokenizerToEN.decode(outputs[0]).replace('<pad>','').strip()
 
 def translateFromEN(input):
+    input = ">>por<< "+input
     inputs = tokenizerFromEN.encode(input, return_tensors="pt")
     outputs = modelFromEN.generate(inputs, num_beams=None, early_stopping=True)
     return tokenizerFromEN.decode(outputs[0]).replace('<pad>','').strip()
