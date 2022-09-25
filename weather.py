@@ -2,10 +2,10 @@ import requests
 from json import load
 
 with open('configurations.json') as f:
-   credentialsfile = load(f)['openweathermap']
+   openweathermap = load(f)['openweathermap']
 
 def weather(location):
-    requisicao = requests.get("https://api.openweathermap.org/data/2.5/weather?q={location}&appid={API_KEY}&lang=pt_br")
+    requisicao = requests.get("https://api.openweathermap.org/data/2.5/weather?q={}&appid={}&lang=pt_br".format(location,openweathermap))
     requisicao_dic = requisicao.json()
     print(requisicao_dic)
 
