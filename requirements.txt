@@ -1,6 +1,6 @@
 torch==1.12.1
 transformers==4.21.2
 sentencepiece==0.1.97
-chatterbot==1.0.4
+chatterbot==1.1.0
 requests==2.28.1
 pytz==2022.2.1
