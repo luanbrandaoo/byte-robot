@@ -1,8 +1,13 @@
-python-3.7.3 https://www.python.org/downloads/release/python-373/
-set api keys
-python -m venv .env
-install requeriments
-install models
+install python
+sudo apt install python3 python3-pip ipython3
 
-creditos
-https://github.com/indently/json_chatbot
+install espeak
+apt-get install espeak
+
+
+install requirements
+pip install -r requirements.txt
+
+set api keys on credentials.json
+
+start server running main.py

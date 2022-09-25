@@ -1,17 +1,19 @@
-from chatbot import get_chatbot_response
+from chatterbot import ChatBot
 from AItranslater import *
 from DialoGPT import *
+chatbot = ChatBot('Bit',logic_adapters=['chatterbot.logic.BestMatch'],storage_adapter='chatterbot.storage.SQLStorageAdapter',database_uri='sqlite:///database.sqlite3')
 
 def main(input):
-    botreply = get_chatbot_response(input)
+    botreply = chatbot.get_response(input)
     print(botreply)
-    if botreply == 'error'
+    print(float(botreply.confidence))
+    if float(botreply.confidence) < 0.7:
         enInput = translateToEN(input)
         reply = dialoGPT(enInput)
         PtReply = translateFromEN(reply)
         return PtReply
     else:
-        return botreply
+        return str(botreply)
         
 
 if __name__ == "__main__":
