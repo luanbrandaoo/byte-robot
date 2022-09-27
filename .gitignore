@@ -1,4 +1,4 @@
 .env/
 .cache/
 __pycache__/
-bit_voice.wav
+byte_voice.wav
