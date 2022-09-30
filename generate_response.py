@@ -3,7 +3,8 @@ from AItranslater import *
 from DialoGPT import *
 chatbot = ChatBot('Byte',logic_adapters=['chatterbot.logic.BestMatch'],storage_adapter='chatterbot.storage.SQLStorageAdapter',database_uri='sqlite:///database.sqlite3',read_only=True)
 
-def main(input):
+def generate_response(input):
+    print(input)
     botreply = chatbot.get_response(input)
     print(botreply)
     print(float(botreply.confidence))
@@ -18,5 +19,5 @@ def main(input):
 
 if __name__ == "__main__":
     while 1:
-        print(main(input('Usuário: ')))
+        print(generate_response(input('Usuário: ')))
         input('Pressione qualquer tecla pra continuar')
