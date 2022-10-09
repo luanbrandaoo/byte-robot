@@ -20,10 +20,14 @@ def main(input):
 def actions(action,input):
   if 'joke(' in action:
     category = action.replace('joke(','')[:-1]
-    return "speak({})".format(generate_voice(jokes(category)))
+    action_text = jokes(category)
+    action_sound = generate_voice(action_text)
+    return "print({})".format(action_text), "speak({})".format(action_sound)
   if 'search(' in action:
     search = input.replace('que foi','').replace('quem','').replace('quando','').replace('como','').replace('pesquise','').replace('sobre','')
-    return "speak({})".format(generate_voice(wikipedia_search(search)))
+    action_text = wikipedia_search(search)
+    action_sound = generate_voice(action_text)
+    return "print({})".format(action_text), "speak({})".format(action_sound)
 
 
 if __name__ == "__main__":
