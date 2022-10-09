@@ -1,5 +1,5 @@
-from modules.generate_response import *
-from modules.generate_voice import *
+from generate_response import *
+from generate_voice import *
 import json
 
 def main(input):

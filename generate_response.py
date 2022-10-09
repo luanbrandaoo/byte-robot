@@ -1,10 +1,10 @@
 from chatterbot import ChatBot
 from AItranslater import *
 from DialoGPT import *
-chatbot = ChatBot('Byte',logic_adapters=['chatterbot.logic.BestMatch'],storage_adapter='chatterbot.storage.SQLStorageAdapter',database_uri='sqlite:///database.sqlite3',read_only=True)
+chatbot = ChatBot('Byte',logic_adapters=['chatterbot.logic.BestMatch'],storage_adapter='chatterbot.storage.SQLStorageAdapter',database_uri='sqlite:///chatterbot_database.sqlite3',read_only=True)
 
 def generate_response(input):
-    print(input)
+    #print(input)
     botreply = chatbot.get_response(input)
     print(botreply)
     print(float(botreply.confidence))
@@ -14,8 +14,8 @@ def generate_response(input):
         PtReply = translateFromEN(reply)
         return PtReply+" execute_action{emotion(neutral)}"
     else:
-        if 'execute_action' not in botreply:
-            botreply=botreply+" execute_action{emotion(neutral)}"
+        if 'execute_action' not in str(botreply):
+            botreply=str(botreply)+" execute_action{emotion(neutral)}"
         return str(botreply)
         
 
