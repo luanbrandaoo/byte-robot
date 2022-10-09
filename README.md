@@ -9,5 +9,9 @@ install requirements
 pip install -r requirements.txt
 
 set api keys on credentials.json
+example:
+{
+  "openweathermap": ""
+}
 
 start server running main.py
