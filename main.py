@@ -1,6 +1,7 @@
-from unicodedata import category
+#from unicodedata import category
 from generate_response import *
 from generate_voice import *
+from music import *
 from jokes import *
 import json
 
@@ -17,6 +18,9 @@ def main(input):
 
 def actions(action,response):
   if 'joke(' in action:
+    category = action.replace('joke(','')[:-1]
+    return "speak({})".format(generate_voice(jokes(category)))
+  if 'search(' in action:
     category = action.replace('joke(','')[:-1]
     return "speak({})".format(generate_voice(jokes(category)))
 
