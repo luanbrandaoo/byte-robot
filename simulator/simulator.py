@@ -1,16 +1,21 @@
 from pynput import keyboard
-from vosk import Model, KaldiRecognizer
-import pyaudio
+import speech_recognition as sr  
 
-model = Model('pt')
-recognizer = KaldiRecognizer(model, 16000)
-cap = pyaudio.PyAudio()
+def mic():
+        microfone = sr.Recognizer()
+        with sr.Microphone() as source:
+                microfone.adjust_for_ambient_noise(source)
+                print("Diga alguma coisa: ")
+                audio = microfone.listen(source)
+                try:
+                        frase = microfone.recognize_google(audio,language='pt-BR')
+                        print("Você disse: " + frase)
+                except:
+                        print("Não entendi")
+        return frase
 
 def main():
-        stream = cap.open(format=pyaudio.paInt16, channels=1, rate=16000, input=True, frames_per_buffer=8192)
-        stream.start_stream()
-        data = stream.read(4096)
-        print(recognizer.Result())
+        mic()
 
 def on_release(key):
         if key == keyboard.Key.enter:

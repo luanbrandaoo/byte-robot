@@ -1,4 +1,5 @@
 .env/
 .cache/
 __pycache__/
-byte_voice.wav
+.byte_voice.wav
+credentials.json

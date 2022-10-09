@@ -12,8 +12,10 @@ def generate_response(input):
         enInput = translateToEN(input)
         reply = dialoGPT(enInput)
         PtReply = translateFromEN(reply)
-        return PtReply
+        return PtReply+" execute_action{emotion(neutral)}"
     else:
+        if 'execute_action' not in botreply:
+            botreply=botreply+" execute_action{emotion(neutral)}"
         return str(botreply)
         
 
