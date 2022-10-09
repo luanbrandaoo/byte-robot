@@ -12,10 +12,10 @@ def main(input):
     actions.append("print({})".format(speech))
     actions.append("speak({})".format(generate_voice(speech)))
   for action in response.split('execute_action')[1].replace('{','').replace('}','').split(','):
-    actions.append(actions(action))
+    actions.append(actions(action,response))
   return json.dumps(actions,ensure_ascii=False).encode('utf8')
 
-def actions(action):
+def actions(action,response):
   if 'joke(' in action:
     category = action.replace('joke(','')[:-1]
     return "speak({})".format(generate_voice(jokes(category)))
