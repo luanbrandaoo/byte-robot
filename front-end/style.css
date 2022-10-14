@@ -1,0 +1,178 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700);
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&display=swap');
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+body {
+  font-size: 100%;
+  font: 14px/20px "Lato", Arial, sans-serif;
+  background-color: #262626;
+}
+
+#left-side {
+  display: flex;
+  position: relative;
+  width: 50%;
+  float: left;
+  height: 100vh;
+  z-index: 1010101010;
+  justify-content: center;
+  align-items: end;
+  flex-direction: column;
+  padding-right: 30px;
+}
+
+#right-side {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 50%;
+  float: left;
+  height: 100vh;
+  z-index: 1010101010;
+  padding-left: 30px;
+}
+
+.chat {
+  width: 35vw;
+  float: left;
+  background: #1E1E1E;
+  border-radius: 50px;
+  color: #FFFFFF;
+}
+
+.chat .chat-history {
+  padding: 30px 30px 20px;
+  overflow-y: hidden;
+  height: 71vh;
+}
+
+.chat .chat-history .message-data {
+  margin-bottom: 5px;
+}
+
+.chat .chat-history .message-data-time {
+  color: #a8aab1;
+  padding-left: 6px;
+}
+
+.chat .chat-history .message {
+  color: black;
+  padding: 18px 20px;
+  line-height: 26px;
+  font-size: 20px;
+  border-radius: 30px;
+  margin-bottom: 30px;
+  width: fit-content;
+  position: relative;
+}
+
+.chat .chat-history .my-message {
+  background: #FFF851;
+}
+
+.online {
+  color: #FFF851;
+  margin-right: 5px;
+}
+
+.chat .chat-history .other-message {
+  background: #E374FF;
+}
+
+.me {
+  color: #E374FF;
+  margin-left: 3px;
+}
+
+.chat .chat-message {
+  padding: 30px;
+}
+
+.chat .chat-message textarea {
+  width: 60%;
+  border: none;
+  padding: 10px 20px;
+  font: 14px/22px "Lato", Arial, sans-serif;
+  margin: 0 10px 10px 10px;
+  border-radius: 5px;
+  resize: none;
+  background-color: #262626;
+  border-radius: 20px;
+}
+
+.chat-message{
+  display: flex;
+  justify-content: center;
+}
+
+.button{
+  width: 20%;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  border-radius: 20px;
+}
+
+.voice{
+  background-color: #E374FF;
+}
+
+.send{
+  background-color: #FFF851;
+}
+
+.online, .offline, .me {
+  font-size: 10px;
+}
+
+.align-left {
+  text-align: left;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.float-right {
+  float: right;
+  text-align: right;
+  
+}
+
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+
+.info{
+  margin: 20px 0 20px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.image {
+  margin-top: 3vh;
+  width: 35vw
+}
+
+h1 {
+  color: #FFF72E;
+  font: 20vh "IBM Plex Mono";
+}
