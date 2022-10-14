@@ -1,7 +1,12 @@
 import json
 from random import choice, randint
 
-with open('jokes.json', encoding='utf-8') as json_file:
+if __name__ == "__main__":
+    jokes_file='jokes.json'
+else:
+    jokes_file='modules/jokes.json'
+
+with open(jokes_file, encoding='utf-8') as json_file:
 	jokes_dict = json.load(json_file)
 
 def jokes(category):

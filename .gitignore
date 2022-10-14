@@ -1,5 +1,9 @@
 .env/
 .cache/
 __pycache__/
-.byte_voice.wav
-credentials.json
+modules/.cache/
+modules/__pycache__/
+modules/credentials.json
+modules/chatterbot_database.sqlite3-shm
+modules/chatterbot_database.sqlite3-wal
+tools/piadas byte.xlsx

@@ -1,9 +1,9 @@
 #from unicodedata import category
-from generate_response import *
-from generate_voice import *
-from music import *
-from jokes import *
-from wikipedia_search import *
+from modules.generate_response import *
+from modules.generate_voice import *
+from modules.music import *
+from modules.jokes import *
+from modules.wikipedia_search import *
 import json
 
 def main(input):
@@ -32,6 +32,6 @@ def action_processor(action,input):
   else:
     return action
 
-
 if __name__ == "__main__":
+  while 1:
     main(input("Digite o texto: "))

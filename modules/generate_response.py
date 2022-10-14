@@ -1,7 +1,15 @@
 from chatterbot import ChatBot
-from AItranslater import *
-from DialoGPT import *
-chatbot = ChatBot('Byte',logic_adapters=['chatterbot.logic.BestMatch'],storage_adapter='chatterbot.storage.SQLStorageAdapter',database_uri='sqlite:///chatterbot_database.sqlite3',read_only=True)
+
+if __name__ == "__main__":
+    from AItranslater import *
+    from DialoGPT import *
+    database_uri = 'sqlite:///chatterbot_database.sqlite3'
+else:
+    from modules.AItranslater import *
+    from modules.DialoGPT import *
+    database_uri = 'sqlite:///modules/chatterbot_database.sqlite3'
+
+chatbot = ChatBot('Byte',logic_adapters=['chatterbot.logic.BestMatch'],storage_adapter='chatterbot.storage.SQLStorageAdapter',database_uri=database_uri,read_only=True)
 
 def generate_response(input):
     #print(input)
@@ -17,7 +25,6 @@ def generate_response(input):
         if 'execute_action' not in str(botreply):
             botreply=str(botreply)+" execute_action{emotion(neutral)}"
         return str(botreply)
-        
 
 if __name__ == "__main__":
     while 1:

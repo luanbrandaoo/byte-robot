@@ -1,7 +1,12 @@
 import requests 
 from json import load
 
-with open('credentials.json') as f:
+if __name__ == "__main__":
+    credentials_file='credentials.json'
+else:
+    credentials_file='modules/credentials.json'
+
+with open(credentials_file) as f:
    openweathermap = load(f)['openweathermap']
 
 def weather(location):

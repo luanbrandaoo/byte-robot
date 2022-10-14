@@ -1,10 +1,15 @@
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 
-tokenizerToEN = AutoTokenizer.from_pretrained("Helsinki-NLP/opus-mt-roa-en", cache_dir=".cache/")
-modelToEN = AutoModelForSeq2SeqLM.from_pretrained("Helsinki-NLP/opus-mt-roa-en", cache_dir=".cache/")
+if __name__ == "__main__":
+    cache_dir='.cache/'
+else:
+    cache_dir='modules/.cache/'
 
-tokenizerFromEN = AutoTokenizer.from_pretrained("Helsinki-NLP/opus-mt-en-mul", cache_dir=".cache/")
-modelFromEN = AutoModelForSeq2SeqLM.from_pretrained("Helsinki-NLP/opus-mt-en-mul", cache_dir=".cache/")
+tokenizerToEN = AutoTokenizer.from_pretrained("Helsinki-NLP/opus-mt-roa-en", cache_dir=cache_dir)
+modelToEN = AutoModelForSeq2SeqLM.from_pretrained("Helsinki-NLP/opus-mt-roa-en", cache_dir=cache_dir)
+
+tokenizerFromEN = AutoTokenizer.from_pretrained("Helsinki-NLP/opus-mt-en-mul", cache_dir=cache_dir)
+modelFromEN = AutoModelForSeq2SeqLM.from_pretrained("Helsinki-NLP/opus-mt-en-mul", cache_dir=cache_dir)
 tokenizerFromEN.dest_lang = 'pt'
 
 def translateToEN(input):
