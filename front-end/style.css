@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Lato:400,700);
+@import url(https://fonts.googleapis.com/css?family=Lato:300,400);
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&display=swap');
 
 *, *:before, *:after {
@@ -63,6 +63,10 @@ body {
 .chat .chat-history .message-time {
   color: #a8aab1;
   padding-left: 6px;
+}
+
+.timestamp{
+  font-weight: 300;
 }
 
 .chat .chat-history .message {
