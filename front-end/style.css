@@ -1,6 +1,13 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:300,400);
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&display=swap');
 
+:root{
+  --screen-top: 0px;
+  --screen-left: 0px;
+  --screen-width: 0px;
+  --screen-height: 0px;
+}
+
 *, *:before, *:after {
   box-sizing: border-box;
 }
@@ -44,6 +51,7 @@ body {
 
 .chat {
   width: 35vw;
+  min-width: 360px;
   float: left;
   background: #1E1E1E;
   border-radius: 50px;
@@ -63,6 +71,7 @@ body {
 .chat .chat-history .message-time {
   color: #a8aab1;
   padding-left: 6px;
+  padding-right: 3px;
 }
 
 .timestamp{
@@ -122,7 +131,7 @@ body {
 }
 
 .button{
-  width: 20%;
+  width: 80px;
   border: none;
   border-radius: 20px;
   padding: 10px 20px;
@@ -137,6 +146,7 @@ body {
 .send{
   background-color: #FFF851;
 }
+
 .align-left {
   text-align: left;
 }
@@ -148,7 +158,6 @@ body {
 .float-right {
   float: right;
   text-align: right;
-  
 }
 
 .message-list:after {
@@ -169,11 +178,37 @@ body {
 }
 
 .image {
-  margin-top: 3vh;
-  width: 35vw
+  width: 35vw;
+  min-width: 300px;
 }
 
 h1 {
   color: #FFF72E;
   font: 20vh "IBM Plex Mono";
+}
+
+.voice, .send{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.shadow {
+  width: 36vw;
+  height: 20vh;
+  background: #181818;
+  box-shadow: 0px 4px 28px 25px rgba(0, 0, 0, 0.25);
+  margin-top:-13vh;
+  border-radius: 50%;
+  z-index: -2;
+}
+
+.screen{
+  z-index: -1;
+  width: var(--screen-width);
+  height: var(--screen-height);
+  background: red;
+  position: absolute; 
+  left: var(--screen-left);
+  top: var(--screen-top);
 }
