@@ -60,7 +60,7 @@ body {
   margin-bottom: 5px;
 }
 
-.chat .chat-history .message-data-time {
+.chat .chat-history .message-time {
   color: #a8aab1;
   padding-left: 6px;
 }
@@ -76,22 +76,24 @@ body {
   position: relative;
 }
 
-.chat .chat-history .my-message {
+.chat .chat-history .byte-message {
   background: #FFF851;
 }
 
-.online {
+.byte-circle {
   color: #FFF851;
   margin-right: 5px;
+  font-size: 10px;
 }
 
-.chat .chat-history .other-message {
+.chat .chat-history .user-message {
   background: #E374FF;
 }
 
 .me {
   color: #E374FF;
   margin-left: 3px;
+  font-size: 10px;
 }
 
 .chat .chat-message {
@@ -131,11 +133,6 @@ body {
 .send{
   background-color: #FFF851;
 }
-
-.online, .offline, .me {
-  font-size: 10px;
-}
-
 .align-left {
   text-align: left;
 }
@@ -150,7 +147,7 @@ body {
   
 }
 
-.clearfix:after {
+.message-list:after {
   visibility: hidden;
   display: block;
   font-size: 0;
