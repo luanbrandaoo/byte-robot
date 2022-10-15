@@ -130,6 +130,10 @@ body {
   justify-content: center;
 }
 
+.message{
+  line-break: anywhere;
+}
+
 .button{
   width: 80px;
   border: none;

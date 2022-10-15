@@ -8,6 +8,21 @@ function updateScreen() {
     root.style.setProperty('--screen-width', (image.offsetWidth/3.88)+'px');
 }
 
+function sendMessage(messageText) {
+    var message = document.createElement('li');
+    time = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
+    message.setAttribute('class', 'message-list');
+    message.innerHTML = '<div class="message-data align-right"><span class="message-time timestamp">'+time+'</span><span class="message-time">Você</span><i class="fa fa-circle me"></i></div><div class="message user-message float-right">'+messageText+'</div>';
+    document.getElementById('chat-messages').appendChild(message);
+}
+
+function receivedMessage(messageText) {
+    var message = document.createElement('li');
+    time = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
+    message.innerHTML = '<div class="message-data"><span class="message-time"><i class="fa fa-circle byte-circle"></i>Byte</span><span class="message-time timestamp">'+time+'</span></div><div class="message byte-message">'+messageText+'</div>';
+    document.getElementById('chat-messages').appendChild(message);
+}
+
 window.onload = updateScreen;
 window.addEventListener('resize', function(event){
     updateScreen()
