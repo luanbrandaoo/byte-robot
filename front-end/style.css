@@ -145,10 +145,30 @@ body {
 
 .voice{
   background-color: #E374FF;
+  transition: 0.3s;
+}
+
+.voice:hover{
+  background-color: #c760e1;
+}
+
+.voice:active {
+  transform: scale(0.95);
+  box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
 }
 
 .send{
   background-color: #FFF851;
+  transition: 0.3s;
+}
+
+.send:hover{
+  background-color: #f5ef38;
+}
+
+.send:active {
+  transform: scale(0.95);
+  box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
 }
 
 .align-left {
