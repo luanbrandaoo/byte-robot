@@ -1,5 +1,5 @@
 const Http = new XMLHttpRequest();
-const responseUrl='/request?input=';
+const responseUrl='/response?input=';
 
 function getResponse(input){
     Http.open("GET", (responseUrl+input));
