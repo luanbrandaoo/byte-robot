@@ -14,9 +14,14 @@ def main(input):
     actions.append("print({})".format(speech))
     actions.append("speak({})".format(generate_voice(speech)))
   for action in response.split('execute_action')[1].replace('{','').replace('}','').split(','):
-    print(action)
     actions.append(action_processor(action,input))
-  return json.dumps(actions,ensure_ascii=False).encode('utf8')
+  actions = str(actions)
+  if actions.startswith('[('):
+    actions = actions[2:-2]
+  else:
+    actions = actions[1:-1]
+  actions = '"'+actions.replace(", '(",', "(').replace("), '",'), "').replace(")', ",')", ').replace(")\", '",')", "')[1:-1]+'"'
+  return actions
 
 def action_processor(action,input):
   if 'joke(' in action:

@@ -13,7 +13,7 @@ function httpRequest(address, reqType, asyncProc) {
 }
 
 function getCommands(messageText) {
-    var commands = httpRequest(("/response?input="+messageText), "GET").responseText.slice(2, -2).split('", "')
+    var commands = httpRequest(("/response?input="+messageText), "GET").responseText.slice(1, -1).split('", "')
     for (var i = 0; i < commands.length; i++) {
         console.log(commands[i])
         if (commands[i].startsWith('print(') == true ) {
