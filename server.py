@@ -3,10 +3,27 @@ from main import *
 
 app = Flask(__name__)
 
+@app.route('/')
+@app.route('/index')
+@app.route('/index.html')
+def index():
+  return send_file('front-end/index.html')
+
+@app.route('/images/<path:reqPath>')
+def getImageFile(reqPath):
+    return send_file('front-end/images/'+reqPath)
+
+@app.route('/scripts/<path:reqPath>')
+def getScriptFile(reqPath):
+    return send_file('front-end/scripts/'+reqPath)
+
+@app.route('/styles/<path:reqPath>')
+def getStyleFile(reqPath):
+    return send_file('front-end/styles/'+reqPath)
+
 @app.route("/response", methods=["GET"])
 def response():
   input = request.args.get("input")
   return main(input)
-  #return send_file("voz.wav", mimetype="audio/wav", as_attachment=True, attachment_filename="voz.wav")
-	
-app.run(debug=True)
+
+app.run(debug=False)
