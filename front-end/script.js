@@ -1,3 +1,15 @@
+const Http = new XMLHttpRequest();
+const responseUrl='/request?input=';
+
+function getResponse(input){
+    Http.open("GET", (responseUrl+input));
+    Http.send();
+    
+    Http.onreadystatechange = (e) => {
+      return Http.responseText
+    }
+}
+
 function updateScreen() {
     var image = document.getElementById('robot-image')
     var imagepos = image.getBoundingClientRect();
@@ -17,6 +29,7 @@ function sendMessage() {
     message.innerHTML = '<div class="message-data align-right"><span class="message-time timestamp">'+time+'</span><span class="message-time">Você</span><i class="fa fa-circle me"></i></div><div class="message user-message float-right">'+messageText+'</div>';
     document.getElementById("message-to-send").value = ""
     document.getElementById('chat-messages').appendChild(message);
+    console.log(getResponse(messageText))
 }
 
 function receivedMessage(messageText) {
