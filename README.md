@@ -4,9 +4,10 @@ sudo apt install python3 python3-pip ipython3
 install espeak
 apt-get install espeak
 
-
 install requirements
 pip install -r requirements.txt
+
+install ngrok
 
 set api keys on credentials.json
 example:
