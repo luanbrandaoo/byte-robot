@@ -8,7 +8,7 @@ else:
     cache_voice_file='modules/.cache/.byte_voice.wav'
 
 def generate_voice(input):
-    print('voice generator input: '+input)
+    #print('voice generator input: '+input)
     system('espeak -vpt-brm2 -s130 "{}" -w {}'.format(input,cache_voice_file))
     sound = AudioSegment.from_file(cache_voice_file, format="wav")
     new_sample_rate = int(sound.frame_rate * (1.3))

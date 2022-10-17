@@ -8,6 +8,7 @@ import json
 
 def main(input):
   response = generate_response(input)
+  print(response)
   speech = str(response.split('execute_action')[0])
   actions = []
   if speech != '':

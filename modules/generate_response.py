@@ -14,12 +14,15 @@ chatbot = ChatBot('Byte',logic_adapters=['chatterbot.logic.BestMatch'],storage_a
 def generate_response(input):
     #print(input)
     botreply = chatbot.get_response(input)
-    print(botreply)
-    print(float(botreply.confidence))
+    #print(botreply)
+    #print(float(botreply.confidence))
     if float(botreply.confidence) < 0.7:
         enInput = translateToEN(input)
         reply = dialoGPT(enInput)
         PtReply = translateFromEN(reply)
+        print('English translation: '+enInput)
+        print('Generated response: '+reply)
+        print('Portuguese translation: '+PtReply)
         return PtReply+" execute_action{emotion(neutral)}"
     else:
         if 'execute_action' not in str(botreply):
