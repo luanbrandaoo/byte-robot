@@ -55,6 +55,11 @@ function receivedMessage(messageText) {
     chatHistory.scrollTo(0, chatHistory.scrollHeight)
 }
 
+function voiceRecognition() {
+    document.getElementById('voicebutton').classList.add("voiceanim");
+    setTimeout(() => {document.getElementById('voicebutton').classList.remove("voiceanim")}, 5000)
+}
+
 window.onload = updateScreen;
 window.addEventListener('resize', function(event){
     updateScreen()
