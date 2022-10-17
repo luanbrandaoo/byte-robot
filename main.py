@@ -31,8 +31,7 @@ def action_processor(action,input):
     action_sound = generate_voice(action_text)
     return "print({})".format(action_text), "speak({})".format(action_sound)
   elif 'search(' in action:
-    search = input.replace('que foi','').replace('quem','').replace('quando','').replace('como','').replace('pesquise','').replace('sobre','')
-    action_text = wikipedia_search(search)
+    action_text = wikipedia_search(input)
     action_sound = generate_voice(action_text)
     return "print({})".format(action_text), "speak({})".format(action_sound)
   else:
