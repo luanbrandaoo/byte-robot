@@ -1,10 +1,15 @@
 from chatterbot import ChatBot
 from chatterbot.trainers import ListTrainer
+from chatterbot.trainers import ChatterBotCorpusTrainer
 
-bot = ChatBot('Byte',logic_adapters=['chatterbot.logic.BestMatch'],storage_adapter='chatterbot.storage.SQLStorageAdapter',database_uri='sqlite:///chatterbot_database.sqlite3')
+bot = ChatBot('Byte',logic_adapters=['chatterbot.logic.BestMatch','chatterbot.logic.MathematicalEvaluation','chatterbot.logic.TimeLogicAdapter'],storage_adapter='chatterbot.storage.SQLStorageAdapter',database_uri='sqlite:///chatterbot_database.sqlite3')
+
+corpus = ChatterBotCorpusTrainer(bot)
+corpus.train('chatterbot.corpus.portuguese')
+corpus.train('chatterbot.corpus.english')
+corpus.train('chatterbot.corpus.spanish')
 
 conversa = ListTrainer(bot)
-
 #greetings
 conversa.train(["Bom dia","Bom dia!"])
 conversa.train(["Bom tarde","Boa tarde!"])

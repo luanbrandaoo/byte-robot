@@ -7,3 +7,4 @@ modules/credentials.json
 modules/chatterbot_database.sqlite3-shm
 modules/chatterbot_database.sqlite3-wal
 tools/piadas byte.xlsx
+tools/sentence_tokenizer.pickle

@@ -1,8 +1,7 @@
-install python
-sudo apt install python3 python3-pip ipython3
+install python 3.8
 
 install espeak
-apt-get install espeak
+sudo apt install espeak
 
 install requirements
 pip install -r requirements.txt

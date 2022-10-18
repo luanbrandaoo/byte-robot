@@ -9,25 +9,24 @@ else:
     from modules.DialoGPT import *
     database_uri = 'sqlite:///modules/chatterbot_database.sqlite3'
 
-chatbot = ChatBot('Byte',logic_adapters=['chatterbot.logic.BestMatch'],storage_adapter='chatterbot.storage.SQLStorageAdapter',database_uri=database_uri,read_only=True)
+chatbot = ChatBot('Byte',logic_adapters=['chatterbot.logic.BestMatch','chatterbot.logic.MathematicalEvaluation','chatterbot.logic.TimeLogicAdapter'],storage_adapter='chatterbot.storage.SQLStorageAdapter',database_uri=database_uri)
 
 def generate_response(input):
-    #print(input)
     botreply = chatbot.get_response(input)
-    #print(botreply)
-    #print(float(botreply.confidence))
-    if float(botreply.confidence) < 0.7:
+    if float(botreply.confidence) < 0.6:
         enInput = translateToEN(input)
-        reply = dialoGPT(enInput)
-        PtReply = translateFromEN(reply)
-        print('English translation: '+enInput)
-        print('Generated response: '+reply)
-        print('Portuguese translation: '+PtReply)
-        return PtReply+" execute_action{emotion(neutral)}"
-    else:
-        if 'execute_action' not in str(botreply):
-            botreply=str(botreply)+" execute_action{emotion(neutral)}"
-        return str(botreply)
+        reply = chatbot.get_response(enInput)
+        if float(reply.confidence) < 0.6:
+            reply = dialoGPT(enInput)
+            reply = translateFromEN(reply)
+            print('English translation: '+enInput)
+            print('Generated response: '+reply)
+            print('Portuguese translation: '+PtReply)
+        else:
+            print('Chatbot americano: '+reply)
+    if 'execute_action' not in str(botreply):
+        botreply=str(botreply)+" execute_action{emotion(neutral)}"
+    return str(botreply)
 
 if __name__ == "__main__":
     while 1:
