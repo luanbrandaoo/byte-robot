@@ -23,7 +23,7 @@ def trainbot(file):
         conversa.train(conversation)
 
 trainbot('cumprimentos.csv')
-trainbot('perguntas e respostas.csv')
-trainbot('ativar comandos.csv')
+trainbot('perguntaserespostas.csv')
+trainbot('ativarcomandos.csv')
 
 print('treinamento realizado.')

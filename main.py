@@ -4,6 +4,7 @@ from modules.generate_voice import *
 from modules.music import *
 from modules.jokes import *
 from modules.wikipedia_search import *
+from modules.get_time import *
 import json
 
 def main(input):
@@ -32,6 +33,22 @@ def action_processor(action,input):
     return "print({})".format(action_text), "speak({})".format(action_sound)
   elif 'search(' in action:
     action_text = wikipedia_search(input)
+    action_sound = generate_voice(action_text)
+    return "print({})".format(action_text), "speak({})".format(action_sound)
+  elif 'hour(' in action:
+    action_text = get_time('time')
+    action_sound = generate_voice(action_text)
+    return "print({})".format(action_text), "speak({})".format(action_sound)
+  elif 'date(' in action:
+    action_text = get_time('date')
+    action_sound = generate_voice(action_text)
+    return "print({})".format(action_text), "speak({})".format(action_sound)
+  elif 'weekday(' in action:
+    action_text = get_time('weekday')
+    action_sound = generate_voice(action_text)
+    return "print({})".format(action_text), "speak({})".format(action_sound)
+  elif 'year(' in action:
+    action_text = get_time('year')
     action_sound = generate_voice(action_text)
     return "print({})".format(action_text), "speak({})".format(action_sound)
   else:
