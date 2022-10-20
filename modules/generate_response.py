@@ -1,4 +1,6 @@
 from chatterbot import ChatBot
+import unicodedata
+import re
 
 if __name__ == "__main__":
     from AItranslater import *
@@ -12,7 +14,8 @@ else:
 chatbot = ChatBot('Byte',logic_adapters=['chatterbot.logic.BestMatch'],storage_adapter='chatterbot.storage.SQLStorageAdapter',database_uri=database_uri)
 
 def generate_response(input):
-    botreply = chatbot.get_response(input)
+    input_rem = re.sub('[^a-zA-Z0-9 \\\]', '', u"".join([c for c in unicodedata.normalize('NFKD', 'oi robô, tudo bom?') if not unicodedata.combining(c)])).strip().lower()
+    botreply = chatbot.get_response(input_rem)
     print(botreply.confidence)
     if float(botreply.confidence) < 0.6:
         enInput = translateToEN(input)
