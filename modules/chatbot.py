@@ -28,7 +28,6 @@ from nltk.stem.porter import PorterStemmer
 nltk.download('punkt')
 stemmer = PorterStemmer()
 
-
 def tokenize(sentence):
 	return nltk.word_tokenize(sentence, language='portuguese')
 
@@ -44,16 +43,18 @@ def bag_of_words(tokenized_sentence, all_words):
 			bag[idx] = 1.0
 	return bag
 
-
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-with open('intends.json', 'r') as f:
+if __name__ == "__main__":
+    database_directory=''
+else:
+    database_directory='modules/'
+
+with open('{}intends.json'.format(database_directory), 'r') as f:
 	intents = json.load(f)
 
-
-file_name = "data.pth"
+file_name = "{}data.pth".format(database_directory)
 data = torch.load(file_name)
-
 
 input_size = data["input_size"]
 output_size = data["output_size"]
@@ -66,10 +67,7 @@ model = NeuralNet(input_size, hidden_size, output_size).to(device)
 model.load_state_dict(model_state)
 model.eval()
 
-
-bot_name = "Sam"
-print("Let's chat! type 'quit' to quit")
-
+bot_name = "Byte"
 
 def get_response(sentence):
 
@@ -86,16 +84,15 @@ def get_response(sentence):
 	probs = torch.softmax(output, dim=1)
 	prob = probs[0][predicted.item()]
 
-	if prob.item() > 0.75:
+	if prob.item() > 0.82:
 		for intent in intents["intents"]:
 			if tag == intent["tag"]:
 				return random.choice(intent['responses'])
 
 	return "error"
 
-
 if __name__ == "__main__":
-    print("Let's chat! (type 'quit' to exit)")
+    print("(type 'quit' to exit)")
     while True:
         sentence = input("You: ")
         if sentence == "quit":
