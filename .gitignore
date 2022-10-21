@@ -8,3 +8,6 @@ tools/piadas byte.xlsx
 tools/cumprimentos.csv
 tools/ativarcomandos.csv
 tools/perguntaserespostas.csv
+tools/falas byte.xlsx
+tools/data.pth
+tools/intends.json

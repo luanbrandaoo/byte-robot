@@ -13,6 +13,7 @@ else:
 def generate_response(input):
     input_rem = re.sub('[^a-zA-Z0-9 \\\]', '', u"".join([c for c in unicodedata.normalize('NFKD', input) if not unicodedata.combining(c)])).strip().lower()
     botreply = get_response(input_rem)
+    print(botreply)
     if botreply == 'error':
         enInput = translateToEN(input)
         reply = blenderbot(enInput)
