@@ -11,12 +11,19 @@ import json
 def main(input):
   response = generate_response(input)
   print(response)
-  speech = str(response.split('execute_action')[0])
+  speech = response.split('execute_action')[0].strip().capitalize()
+  if len(speech) > 1:
+    if speech[-1] != '.':
+      speech = speech+'.'
   actions = []
   if speech != '':
     actions.append("print({})".format(speech))
-    actions.append("speak({})".format(generate_voice(speech)))
-  for action in response.split('execute_action')[1].replace('{','').replace('}','').split(','):
+    #actions.append("speak({})".format(generate_voice(speech)))
+  if response.strip().startswith("execute_action") == True:
+    actionlist = response.split("execute_action")[1].replace('{','').replace('}','').split(',')
+  else:
+    actionlist = response.split("execute_action")[0].replace('{','').replace('}','').split(',')
+  for action in actionlist:
     actions.append(action_processor(action,input))
   actions = str(actions)
   if actions.startswith('[('):
@@ -24,40 +31,41 @@ def main(input):
   else:
     actions = actions[1:-1]
   actions = '"'+actions.replace(", '(",', "(').replace("), '",'), "').replace(")', ",')", ').replace(")\", '",')", "')[1:-1]+'"'
+  #print(actions)
   return actions
 
 def action_processor(action,input):
   if 'joke(' in action:
     category = action.replace('joke(','')[:-1]
     action_text = jokes(category)
-    action_sound = generate_voice(action_text)
-    return "print({})".format(action_text), "speak({})".format(action_sound)
+    #action_sound = generate_voice(action_text)
+    return "print({})".format(action_text)#, "speak({})".format(action_sound)
   elif 'search(' in action:
     action_text = wikipedia_search(input)
-    action_sound = generate_voice(action_text)
-    return "print({})".format(action_text), "speak({})".format(action_sound)
+    #action_sound = generate_voice(action_text)
+    return "print({})".format(action_text)#, "speak({})".format(action_sound)
   elif 'music(' in action:
     action_text = 'Ainda não consigo reproduzir músicas, mas vou conseguir no próximo update.'
-    action_sound = generate_voice(action_text)
-    return "print({})".format(action_text), "speak({})".format(action_sound)
+    #action_sound = generate_voice(action_text)
+    return "print({})".format(action_text)#, "speak({})".format(action_sound)
   elif 'get_time(' in action:
     category = action.replace('get_time(','')[:-1]
     action_text = get_time(category)
-    action_sound = generate_voice(action_text)
-    return "print({})".format(action_text), "speak({})".format(action_sound)
+    #action_sound = generate_voice(action_text)
+    return "print({})".format(action_text)#, "speak({})".format(action_sound)
   elif 'weather(' in action:
     category = action.replace('weather(','')[:-1]
     action_text = weather(category,'vassouras')
-    action_sound = generate_voice(action_text)
-    return "print({})".format(action_text), "speak({})".format(action_sound)
+    #action_sound = generate_voice(action_text)
+    return "print({})".format(action_text)#, "speak({})".format(action_sound)
   elif 'recognition(' in action:
     action_text = 'Ainda não consigo reconhecer pessoas, mas vou conseguir nos próximos updates.'
-    action_sound = generate_voice(action_text)
-    return "print({})".format(action_text), "speak({})".format(action_sound)
+    #action_sound = generate_voice(action_text)
+    return "print({})".format(action_text)#, "speak({})".format(action_sound)
   elif 'calculate(' in action:
     action_text = calc(input)
-    action_sound = generate_voice(action_text)
-    return "print({})".format(action_text), "speak({})".format(action_sound)
+    #action_sound = generate_voice(action_text)
+    return "print({})".format(action_text)#, "speak({})".format(action_sound)
   else:
     return action
 
