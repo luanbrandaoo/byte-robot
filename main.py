@@ -13,7 +13,7 @@ def main(input):
   print(response)
   speech = response.split('execute_action')[0].strip().capitalize()
   if len(speech) > 1:
-    if speech[-1] != '.':
+    if speech[-1] != '.' or speech[-1] != '!' or speech[-1] != '?':
       speech = speech+'.'
   actions = []
   if speech != '':

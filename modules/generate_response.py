@@ -1,5 +1,4 @@
-import unicodedata
-import re
+import unidecode
 
 if __name__ == "__main__":
     from AItranslater import *
@@ -11,7 +10,7 @@ else:
     from modules.chatbot import get_response
 
 def generate_response(input):
-    input_rem = re.sub('[^a-zA-Z0-9 \\\]', '', u"".join([c for c in unicodedata.normalize('NFKD', input) if not unicodedata.combining(c)])).strip().lower()
+    input_rem = unidecode.unidecode(input).strip().lower()
     botreply = get_response(input_rem)
     #print(botreply)
     if botreply == 'error':
