@@ -19,11 +19,14 @@ def generate_response(input):
         reply = blenderbot(enInput)
         PtReply = translateFromEN(reply)
         botreply = PtReply
-        print('English translation: '+enInput)
-        print('Generated response: '+reply)
-        print('Portuguese translation: '+PtReply)
+        #print('English translation: '+enInput)
+        #print('Generated response: '+reply)
+        #print('Portuguese translation: '+PtReply)
     if 'execute_action' not in str(botreply):
         botreply=str(botreply)+" execute_action{emotion(neutral)}"
+    botreply = str(botreply).replace('Sara','Byte').replace('byte','Byte').strip().capitalize()
+    if botreply[-1] != '.':
+        botreply = botreply+'.'
     return str(botreply)
 
 if __name__ == "__main__":

@@ -4,6 +4,8 @@ from modules.music import *
 from modules.jokes import *
 from modules.wikipedia_search import *
 from modules.get_time import *
+from modules.weather import *
+from modules.calc import *
 import json
 
 def main(input):
@@ -34,20 +36,26 @@ def action_processor(action,input):
     action_text = wikipedia_search(input)
     action_sound = generate_voice(action_text)
     return "print({})".format(action_text), "speak({})".format(action_sound)
-  elif 'hour(' in action:
-    action_text = get_time('time')
+  elif 'music(' in action:
+    action_text = 'Ainda não consigo reproduzir músicas, mas vou conseguir no próximo update.'
     action_sound = generate_voice(action_text)
     return "print({})".format(action_text), "speak({})".format(action_sound)
-  elif 'date(' in action:
-    action_text = get_time('date')
+  elif 'get_time(' in action:
+    category = action.replace('get_time(','')[:-1]
+    action_text = get_time(category)
     action_sound = generate_voice(action_text)
     return "print({})".format(action_text), "speak({})".format(action_sound)
-  elif 'weekday(' in action:
-    action_text = get_time('weekday')
+  elif 'weather(' in action:
+    category = action.replace('weather(','')[:-1]
+    action_text = weather(category,'vassouras')
     action_sound = generate_voice(action_text)
     return "print({})".format(action_text), "speak({})".format(action_sound)
-  elif 'year(' in action:
-    action_text = get_time('year')
+  elif 'recognition(' in action:
+    action_text = 'Ainda não consigo reconhecer pessoas, mas vou conseguir nos próximos updates.'
+    action_sound = generate_voice(action_text)
+    return "print({})".format(action_text), "speak({})".format(action_sound)
+  elif 'calculate(' in action:
+    action_text = calc(input)
     action_sound = generate_voice(action_text)
     return "print({})".format(action_text), "speak({})".format(action_sound)
   else:
