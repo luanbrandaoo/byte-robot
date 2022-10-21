@@ -12,6 +12,15 @@ function httpRequest(address, reqType, asyncProc) {
     return req;
 }
 
+function processing() {
+    var message = document.createElement('li')
+    time = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
+    message.innerHTML = '<div class="message-data" id="processing"><span class="message-time"><i class="fa fa-circle byte-circle"></i>Byte</span><span class="message-time timestamp">'+time+'</span></div><div class="message byte-message" id="processing_message"><div class="processing"><div class="dot-typing"></div></div></div>'
+    document.getElementById('chat-messages').appendChild(message)
+    var chatHistory = document.getElementById("chat-history")
+    chatHistory.scrollTo(0, chatHistory.scrollHeight)
+}
+
 function getCommands(messageText) {
     var commands = httpRequest(("/response?input="+messageText), "GET").responseText.slice(1, -1).split('", "')
     for (var i = 0; i < commands.length; i++) {
@@ -43,7 +52,8 @@ function sendMessage() {
     document.getElementById('chat-messages').appendChild(message)
     var chatHistory = document.getElementById("chat-history")
     chatHistory.scrollTo(0, chatHistory.scrollHeight)
-    setTimeout(() => {getCommands(messageText)}, 500)
+    setTimeout(() => {getCommands(messageText)}, 600)
+    setTimeout(() => {processing()}, 500)
 }
 
 function receivedMessage(messageText) {
@@ -53,6 +63,8 @@ function receivedMessage(messageText) {
     document.getElementById('chat-messages').appendChild(message)
     var chatHistory = document.getElementById("chat-history")
     chatHistory.scrollTo(0, chatHistory.scrollHeight)
+    document.getElementById("processing").remove()
+    document.getElementById("processing_message").remove()
 }
 
 function voiceRecognition() {
