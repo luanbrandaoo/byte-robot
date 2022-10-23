@@ -22,6 +22,10 @@ function getCommands(commands) {
         if (commands[i].startsWith('print(') == true ) {
             receivedMessage(commands[i].replace('print(', '').slice(0, -1))
         }
+        if (commands[i].startsWith('speak(') == true ) {
+            var snd = new Audio("data:audio/wav;base64," + commands[i].replace('speak(', '').slice(2, -2));
+            snd.play();
+        }
     }
 }
 
