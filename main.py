@@ -56,9 +56,10 @@ def action_processor(action,input):
     return "print({})".format(action_text), "speak({})".format(action_sound)
   elif 'weather(' in action:
     category = action.replace('weather(','')[:-1]
-    action_text = weather(category,'vassouras')
+    action_data = weather(category,'vassouras')
+    action_text = action_data[-1]
     action_sound = generate_voice(action_text)
-    return "print({})".format(action_text[-1]), "speak({})".format(action_sound)
+    return "print({})".format(action_text), "speak({})".format(action_sound)
   elif 'recognition(' in action:
     action_text = 'Ainda não consigo reconhecer pessoas, mas vou conseguir nos próximos updates.'
     action_sound = generate_voice(action_text)
