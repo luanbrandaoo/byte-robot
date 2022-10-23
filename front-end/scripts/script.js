@@ -26,6 +26,9 @@ function getCommands(commands) {
             var snd = new Audio("data:audio/wav;base64," + commands[i].replace('speak(', '').slice(2, -2));
             snd.play();
         }
+        if (commands[i].startsWith('weather(') == true ) {
+            weather(commands[i].replace('weather(', '').slice(0, -1))
+        }
     }
 }
 

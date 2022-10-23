@@ -268,10 +268,13 @@ h1 {
   z-index: -1;
   width: var(--screen-width);
   height: var(--screen-height);
-  background: red;
+  background: black;
   position: absolute; 
   left: var(--screen-left);
   top: var(--screen-top);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .processing{
@@ -324,4 +327,9 @@ h1 {
   100% {
     box-shadow: 9984px 0 0 0 black, 9999px 0 0 0 black, 10014px 0 0 0 black;
   }
+}
+
+.animated-icons {
+  height: 100%;
+  width: auto;
 }
