@@ -41,7 +41,7 @@ function updateScreen() {
 
 function sendMessage() {
     var messageText = document.getElementById("message-to-send").value
-    if (messageText.replace(' ', '') == '') return
+    if (messageText.replace('\n', '').replace(' ', '') == '') return
     var message = document.createElement('li')
     time = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
     message.setAttribute('class', 'message-list')
