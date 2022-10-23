@@ -9,6 +9,8 @@ else:
 
 def generate_voice(input):
     #print('voice generator input: '+input)
+    input = input.replace("'",'').replace('"','')
+    print(input)
     system('espeak -vpt-brm2 -s130 "{}" -w {}'.format(input,cache_voice_file))
     sound = AudioSegment.from_file(cache_voice_file, format="wav")
     new_sample_rate = int(sound.frame_rate * (1.3))
