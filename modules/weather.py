@@ -65,7 +65,7 @@ def weather(mode,location):
                 speakresponse = tomorrow_weather_list[0].format(weather_name,location)
             else:
                 speakresponse = aftertm_weather_list[0].format(weather_name,location)
-            return weather,speakresponse
+            return weather_name,speakresponse
     else:
         requisicao = requests.get("https://api.openweathermap.org/data/2.5/weather?q={}&appid={}".format(location,openweathermap))
         location = requisicao.json()['name']
@@ -73,7 +73,7 @@ def weather(mode,location):
             weather = int(requisicao.json()['weather'][0]['id'])
             weather_name = format_weather(weather)
             speakresponse = today_weather_list[0].format(weather_name,location)
-            return weather,speakresponse
+            return weather_name,speakresponse
         if mode.startswith('temperature'):
             celsius = (int(requisicao.json()['main']['temp']))-273
             speakresponse = today_temp_list[0].format(celsius,location)
