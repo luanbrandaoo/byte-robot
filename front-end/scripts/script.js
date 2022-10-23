@@ -1,15 +1,11 @@
-function httpRequest(address, reqType, asyncProc) {
-    var req = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
-    if (asyncProc) { 
-      req.onreadystatechange = function() { 
-        if (this.readyState == 4) {
-          asyncProc(this);
-        } 
-      };
-    }
-    req.open(reqType, address, !(!asyncProc));
-    req.send();
-    return req;
+async function responseRequest(address) {
+    $.ajax({
+        url: address,
+        type: "GET",
+        success: function(result) {
+            getCommands(result.slice(1, -1).split('", "'))
+        },
+    });
 }
 
 function processing() {
@@ -21,10 +17,8 @@ function processing() {
     chatHistory.scrollTo(0, chatHistory.scrollHeight)
 }
 
-function getCommands(messageText) {
-    var commands = httpRequest(("/response?input="+messageText), "GET").responseText.slice(1, -1).split('", "')
+function getCommands(commands) {
     for (var i = 0; i < commands.length; i++) {
-        console.log(commands[i])
         if (commands[i].startsWith('print(') == true ) {
             receivedMessage(commands[i].replace('print(', '').slice(0, -1))
         }
@@ -52,8 +46,8 @@ function sendMessage() {
     document.getElementById('chat-messages').appendChild(message)
     var chatHistory = document.getElementById("chat-history")
     chatHistory.scrollTo(0, chatHistory.scrollHeight)
-    setTimeout(() => {getCommands(messageText)}, 600)
-    setTimeout(() => {processing()}, 500)
+    processing()
+    responseRequest("/response?input="+messageText)
 }
 
 function receivedMessage(messageText) {
