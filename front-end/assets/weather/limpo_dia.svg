@@ -2,7 +2,7 @@
     <defs>
         <symbol id="a" viewBox="0 0 375 375">
             <!-- core -->
-            <circle cx="187.5" cy="187.5" r="84" fill="none" stroke="#fbbf24" stroke-miterlimit="10" stroke-width="15"/>
+            <circle cx="187.5" cy="187.5" r="84" fill="#fbbf24" stroke="#fbbf24" stroke-miterlimit="10" stroke-width="15"/>
 
             <!-- rays -->
             <path d="M187.5,57.16V7.5m0,360V317.84M279.67,95.33l35.11-35.11M60.22,314.78l35.11-35.11m0-184.34L60.22,60.22M314.78,314.78l-35.11-35.11M57.16,187.5H7.5m360,0H317.84" fill="none" stroke="#fbbf24" stroke-linecap="round" stroke-miterlimit="10" stroke-width="15">
