@@ -13,7 +13,9 @@ def main(input):
   print(response)
   speech = response.split('execute_action')[0].strip().capitalize()
   if len(speech) > 1:
-    if speech[-1] != '.' or speech[-1] != '!' or speech[-1] != '?':
+    if speech[-1] not in ['.','!', '?']:
+      print(speech)
+      print(speech[-1])
       speech = speech+'.'
   actions = []
   if speech != '':
@@ -57,7 +59,7 @@ def action_processor(action,input):
     category = action.replace('weather(','')[:-1]
     action_text = weather(category,'vassouras')
     #action_sound = generate_voice(action_text)
-    return "print({})".format(action_text)#, "speak({})".format(action_sound)
+    return "print({})".format(action_text[-1])#, "speak({})".format(action_sound)
   elif 'recognition(' in action:
     action_text = 'Ainda não consigo reconhecer pessoas, mas vou conseguir nos próximos updates.'
     #action_sound = generate_voice(action_text)
