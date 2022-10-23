@@ -9,9 +9,9 @@ app = Flask(__name__)
 def index():
   return send_file('front-end/index.html')
 
-@app.route('/images/<path:reqPath>')
+@app.route('/assets/<path:reqPath>')
 def getImageFile(reqPath):
-    return send_file('front-end/images/'+reqPath)
+    return send_file('front-end/assets/'+reqPath)
 
 @app.route('/scripts/<path:reqPath>')
 def getScriptFile(reqPath):
