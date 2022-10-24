@@ -333,3 +333,39 @@ h1 {
   height: 100%;
   width: auto;
 }
+
+.dot-typing-screen {
+  position: relative;
+  left: -9999px;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
+  box-shadow: 9984px 0 0 0 white, 9999px 0 0 0 white, 1rgb(255, 255, 255)x 0 0 0 white;
+  animation: dotTypingScreen 1.5s infinite linear;
+}
+
+@keyframes dotTypingScreen {
+  0% {
+    box-shadow: 9984px 0 0 0 white, 9999px 0 0 0 white, 10014px 0 0 0 white;
+  }
+  16.667% {
+    box-shadow: 9984px -10px 0 0 white, 9999px 0 0 0 white, 10014px 0 0 0 white;
+  }
+  33.333% {
+    box-shadow: 9984px 0 0 0 white, 9999px 0 0 0 white, 10014px 0 0 0 white;
+  }
+  50% {
+    box-shadow: 9984px 0 0 0 white, 9999px -10px 0 0 white, 10014px 0 0 0 white;
+  }
+  66.667% {
+    box-shadow: 9984px 0 0 0 white, 9999px 0 0 0 white, 10014px 0 0 0 white;
+  }
+  83.333% {
+    box-shadow: 9984px 0 0 0 white, 9999px 0 0 0 white, 10014px -10px 0 0 white;
+  }
+  100% {
+    box-shadow: 9984px 0 0 0 white, 9999px 0 0 0 white, 10014px 0 0 0 white;
+  }
+}
