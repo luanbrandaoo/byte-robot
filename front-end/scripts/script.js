@@ -15,6 +15,7 @@ function processing() {
     document.getElementById('chat-messages').appendChild(message)
     var chatHistory = document.getElementById("chat-history")
     chatHistory.scrollTo(0, chatHistory.scrollHeight)
+    processingScreen()
 }
 
 function getCommands(commands) {

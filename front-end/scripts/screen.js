@@ -24,3 +24,12 @@ function emotion(mode) {
     img.setAttribute('src', "assets/emotion/"+mode+".png")
     screen.appendChild(img)
 }
+
+function processingScreen() {
+    const screen = document.getElementById('robot-screen')
+    cleanScreen()
+    var img = document.createElement('div')
+    //img.setAttribute('class', 'animated-icons')
+    message.innerHTML = '<div class="dot-typing-screen"></div>'
+    screen.appendChild(img)
+}
