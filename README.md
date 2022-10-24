@@ -18,3 +18,5 @@ start server running main.py
 
 credits:
 https://github.com/sudharsanbaskars/AI-Chatbot
+https://github.com/basmilius/weather-icons
+https://icons8.com
