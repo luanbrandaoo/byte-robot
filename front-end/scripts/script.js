@@ -29,6 +29,9 @@ function getCommands(commands) {
         if (commands[i].startsWith('weather(') == true ) {
             weather(commands[i].replace('weather(', '').slice(0, -1))
         }
+        if (commands[i].startsWith('emotion(') == true ) {
+            emotion(commands[i].replace('emotion(', '').slice(0, -1))
+        }
     }
 }
 
