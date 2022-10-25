@@ -21,7 +21,7 @@ function emotion(mode) {
     cleanScreen()
     var img = document.createElement('img')
     img.setAttribute('class', 'animated-icons')
-    img.setAttribute('src', "assets/emotion/"+mode+".png")
+    img.setAttribute('src', "assets/emotions/"+mode+".png")
     screen.appendChild(img)
 }
 
@@ -30,6 +30,14 @@ function processingScreen() {
     cleanScreen()
     var img = document.createElement('div')
     //img.setAttribute('class', 'animated-icons')
-    message.innerHTML = '<div class="dot-typing-screen"></div>'
+    img.innerHTML = '<div class="dot-typing-screen"></div>'
     screen.appendChild(img)
 }
+
+function startScreen() {
+setTimeout(() => { 
+    emotion('neutral');
+},500);
+}
+
+window.onload = startScreen();
