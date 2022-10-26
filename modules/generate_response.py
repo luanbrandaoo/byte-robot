@@ -4,22 +4,25 @@ if __name__ == "__main__":
     from AItranslater import *
     from blenderbot import *
     from chatbot import get_response
-    from calc import *
+    from calc import detect_calc
+    from wikipedia_search import detect_search
 else:
     from modules.AItranslater import *
     from modules.blenderbot import *
     from modules.chatbot import get_response
-    from modules.calc import *
+    from modules.calc import detect_calc
+    from modules.wikipedia_search import detect_search
 
-calc_list = ['mais','menos','dividido','multiplicado','somado','diminuido','dividir','multiplica','com','sem','divisão','vezes','soma','tira','somado','subtraido','divisao','elevado','sobre','+','-','/','*','**']
 
 def generate_response(input):
     input_rem = unidecode.unidecode(input).strip().lower()
     botreply = get_response(input_rem)
     #print(botreply)
     if botreply == 'error':
-        if detect_calc(input) == True:
+        if detect_calc(input_rem) == True:
             botreply = 'execute_action{calculate()}'
+        elif detect_search(input_rem) == True:
+            botreply = 'execute_action{search()}'
         else:
             enInput = translateToEN(input)
             reply = blenderbot(enInput)
