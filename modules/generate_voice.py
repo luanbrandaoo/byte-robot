@@ -15,7 +15,7 @@ def generate_voice(input):
     sound = AudioSegment.from_file(cache_voice_file, format="wav")
     new_sample_rate = int(sound.frame_rate * (1.3))
     hipitch_sound = sound._spawn(sound.raw_data, overrides={'frame_rate': new_sample_rate})
-    hipitch_sound.export(cache_voice_file, format="wav")
+    hipitch_sound.export(cache_voice_file, format='mp3', parameters=["-ac","2","-ar","8000"])
     with open(cache_voice_file, 'rb') as binary_file:
         binary_file_data = binary_file.read()
         base64_encoded_data = base64.b64encode(binary_file_data)
