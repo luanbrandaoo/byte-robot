@@ -4,10 +4,12 @@ if __name__ == "__main__":
     from AItranslater import *
     from blenderbot import *
     from chatbot import get_response
+    from calc import *
 else:
     from modules.AItranslater import *
     from modules.blenderbot import *
     from modules.chatbot import get_response
+    from modules.calc import *
 
 calc_list = ['mais','menos','dividido','multiplicado','somado','diminuido','dividir','multiplica','com','sem','divisão','vezes','soma','tira','somado','subtraido','divisao','elevado','sobre','+','-','/','*','**']
 
@@ -16,7 +18,7 @@ def generate_response(input):
     botreply = get_response(input_rem)
     #print(botreply)
     if botreply == 'error':
-        if (input_rem.startswith('quanto') or input_rem.startswith('calcule')) and calc_list in input_rem:
+        if detect_calc(input) == True:
             botreply = 'execute_action{calculate()}'
         else:
             enInput = translateToEN(input)

@@ -3,6 +3,17 @@ from text_to_num import alpha2digit
 operator_text = ['mais','menos','dividido','multiplicado','somado','diminuido','dividir','multiplica','com','sem','divisão','vezes','soma','tira','somado','subtraido','divisao','elevado','sobre']
 operator_simb = ['+','-','/','*','+','-','/','*','+','-','/','*','+','-','+','-','/','**','/']
 letters = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',' ','  ','ç','~','^','ã','ê','á','à','`','õ','ô','â','é','?','!']
+calc_list = ['mais','menos','dividido','multiplicado','somado','diminuido','dividir','multiplica','com','sem','divisão','vezes','soma','tira','somado','subtraido','divisao','elevado','sobre','+','-','/','*','**']
+
+def detect_calc(input):
+    if input.startswith('quanto') or input.startswith('calcule'):
+        for word in calc_list:
+            if word in input:
+                return True
+        return False
+    else:
+        return False
+        
 
 def calc(input):
     input = input.lower().strip().replace('tres','três').replace('milhao','milhão').replace('milhoes','milhões').replace('bilhao','bilhão').replace('bilhoes','bilhões').replace('bilhao','bilhão').replace('trilhoes','trilhões')
