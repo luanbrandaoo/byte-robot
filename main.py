@@ -21,10 +21,9 @@ def main(input):
   if speech != '':
     actions.append("print({})".format(speech))
     actions.append("speak({})".format(generate_voice(speech)))
-  if response.strip().startswith("execute_action") == True:
-    actionlist = response.split("execute_action")[1].replace('{','').replace('}','').split(',')
-  else:
-    actionlist = response.split("execute_action")[0].replace('{','').replace('}','').split(',')
+  if 'execute_action' not in response:
+    response=response+" execute_action{emotion(neutral)}"
+  actionlist = response.split("execute_action")[1].replace('{','').replace('}','').split(',')
   for action in actionlist:
     actions.append(action_processor(action,input))
   actions = str(actions)

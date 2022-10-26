@@ -31,9 +31,8 @@ def generate_response(input):
             #print('English translation: '+enInput)
             #print('Generated response: '+reply)
             #print('Portuguese translation: '+PtReply)
-    if 'execute_action' not in str(botreply):
-        botreply=str(botreply)+" execute_action{emotion(neutral)}"
     botreply = str(botreply).replace('Sara','Byte').replace('byte','Byte').strip()
+    #print(botreply)
     return botreply
 
 if __name__ == "__main__":
