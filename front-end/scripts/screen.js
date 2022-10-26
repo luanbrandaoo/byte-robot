@@ -16,6 +16,22 @@ function weather(mode) {
     screen.appendChild(img)
 }
 
+function temperature(mode) {
+    const screen = document.getElementById('robot-screen')
+    mode = parseFloat(mode)
+    if (mode >= 25) {
+        mode = 'hot'
+    }
+    else {
+        mode = 'cold'
+    }
+    cleanScreen()
+    var img = document.createElement('img')
+    img.setAttribute('class', 'animated-icons')
+    img.setAttribute('src', "assets/temperature/"+mode+".svg")
+    screen.appendChild(img)
+}
+
 function emotion(mode) {
     const screen = document.getElementById('robot-screen')
     cleanScreen()
@@ -40,4 +56,4 @@ setTimeout(() => {
 },500);
 }
 
-window.onload = startScreen();
+//window.onload = startScreen();
