@@ -56,4 +56,4 @@ setTimeout(() => {
 },500);
 }
 
-//window.onload = startScreen();
+window.onload = startScreen();
