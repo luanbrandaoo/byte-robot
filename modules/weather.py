@@ -61,13 +61,13 @@ def weather(mode,location):
                 speakresponse = tomorrow_temp_list[0].format(celsius,location)
             else:
                 speakresponse = aftertm_temp_list[0].format(celsius,location)
-            return celsius,speakresponse
+            return celsius,speakresponse,'temperature'
         else:
             if day == 1:
                 speakresponse = tomorrow_weather_list[0].format(weather_name,location)
             else:
                 speakresponse = aftertm_weather_list[0].format(weather_name,location)
-            return weather_name,speakresponse
+            return weather_name,speakresponse,'weather'
     else:
         requisicao = requests.get("https://api.openweathermap.org/data/2.5/weather?q={}&appid={}".format(location,openweathermap))
         location = requisicao.json()['name']
@@ -80,11 +80,11 @@ def weather(mode,location):
                     weather_name = weather_name+'_dia'
                 else:
                     weather_name = weather_name+'_noite'
-            return weather_name,speakresponse
+            return weather_name,speakresponse,'weather'
         if mode.startswith('temperature'):
             celsius = (int(requisicao.json()['main']['temp']))-273
             speakresponse = today_temp_list[0].format(celsius,location)
-            return celsius,speakresponse
+            return celsius,speakresponse,'temperature'
 
 if __name__ == "__main__":
     print(weather('forecast_today',"vassouras"))
