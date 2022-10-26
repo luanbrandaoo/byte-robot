@@ -275,22 +275,11 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-right: 2px;
 }
 
 .processing{
   padding: 18px 20px;
-}
-
-.dot-typing {
-  position: relative;
-  left: -9999px;
-  width: 10px;
-  height: 10px;
-  border-radius: 5px;
-  background-color: black;
-  color: black;
-  box-shadow: 9984px 0 0 0 black, 9999px 0 0 0 black, 10014px 0 0 0 black;
-  animation: dotTyping 1.5s infinite linear;
 }
 
 .dot-typing {
