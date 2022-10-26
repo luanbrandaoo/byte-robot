@@ -3,6 +3,9 @@ install python 3.8
 install espeak
 sudo apt install espeak
 
+install ffmpeg
+sudo apt install ffmpeg
+
 install requirements
 pip install -r requirements.txt
 

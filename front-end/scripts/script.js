@@ -24,7 +24,7 @@ function getCommands(commands) {
             receivedMessage(commands[i].replace('print(', '').slice(0, -1))
         }
         if (commands[i].startsWith('speak(') == true ) {
-            var snd = new Audio("data:audio/wav;base64," + commands[i].replace('speak(', '').slice(2, -2));
+            var snd = new Audio("data:audio/mp3;base64," + commands[i].replace('speak(', '').slice(2, -2));
             snd.play();
         }
         if (commands[i].startsWith('weather(') == true ) {
