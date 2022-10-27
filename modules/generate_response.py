@@ -6,12 +6,14 @@ if __name__ == "__main__":
     from chatbot import get_response
     from calc import detect_calc
     from wikipedia_search import detect_search
+    from get_time import detect_time
 else:
     from modules.AItranslater import *
     from modules.blenderbot import *
     from modules.chatbot import get_response
     from modules.calc import detect_calc
     from modules.wikipedia_search import detect_search
+    from modules.get_time import detect_time
 
 
 def generate_response(input):
@@ -23,6 +25,8 @@ def generate_response(input):
             botreply = 'execute_action{calculate()}'
         elif detect_search(input_rem) == True:
             botreply = 'execute_action{search()}'
+        elif detect_time(input_rem) == True:
+            botreply = 'execute_action{get_time(time)}'
         else:
             enInput = translateToEN(input)
             reply = blenderbot(enInput)
