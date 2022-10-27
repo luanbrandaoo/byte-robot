@@ -39,20 +39,20 @@ def action_processor(action,input):
     category = action.replace('joke(','')[:-1]
     action_text = jokes(category)
     action_sound = generate_voice(action_text)
-    return "print({})".format(action_text), "speak({})".format(action_sound)
+    return "print({})".format(action_text), "speak({})".format(action_sound),"emotion(happy)"
   elif 'search(' in action:
     action_text = wikipedia_search(input)
     action_sound = generate_voice(action_text)
-    return "print({})".format(action_text), "speak({})".format(action_sound)
+    return "print({})".format(action_text), "speak({})".format(action_sound),"emotion(neutral)"
   elif 'music(' in action:
     action_text = 'Ainda não consigo reproduzir músicas, mas vou conseguir no próximo update.'
     action_sound = generate_voice(action_text)
-    return "print({})".format(action_text), "speak({})".format(action_sound)
+    return "print({})".format(action_text), "speak({})".format(action_sound),"emotion(sad)"
   elif 'get_time(' in action:
     category = action.replace('get_time(','')[:-1]
     action_text = get_time(category)
     action_sound = generate_voice(action_text)
-    return "print({})".format(action_text), "speak({})".format(action_sound)
+    return "print({})".format(action_text), "speak({})".format(action_sound),"emotion(neutral)"
   elif 'weather(' in action:
     category = action.replace('weather(','')[:-1]
     action_data = weather(category,'vassouras')
@@ -68,11 +68,11 @@ def action_processor(action,input):
   elif 'recognition(' in action:
     action_text = 'Ainda não consigo reconhecer pessoas, mas vou conseguir nos próximos updates.'
     action_sound = generate_voice(action_text)
-    return "print({})".format(action_text), "speak({})".format(action_sound)
+    return "print({})".format(action_text), "speak({})".format(action_sound),"emotion(sad)"
   elif 'calculate(' in action:
     action_text = calc(input)
     action_sound = generate_voice(action_text)
-    return "print({})".format(action_text), "speak({})".format(action_sound)
+    return "print({})".format(action_text), "speak({})".format(action_sound),"emotion(neutral)"
   else:
     return action
 
