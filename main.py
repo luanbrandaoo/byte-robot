@@ -8,6 +8,12 @@ from modules.weather import *
 from modules.calc import *
 import json
 
+log_file = open('log.csv','a')
+def log(input,actions):
+  log_file.write(input+','+actions)
+  log_file.write('\n')
+
+
 def main(input):
   response = generate_response(input)
   #print(response)
@@ -32,6 +38,7 @@ def main(input):
   else:
     actions = actions[1:-1]
   actions = '"'+actions.replace(", '(",', "(').replace("), '",'), "').replace(")', ",')", ').replace(")\", '",')", "')[1:-1]+'"'
+  log(input,actions)
   return actions
 
 def action_processor(action,input):

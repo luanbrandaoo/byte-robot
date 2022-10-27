@@ -12,3 +12,4 @@ tools/falas byte.xlsx
 tools/data.pth
 tools/intends.json
 front-end\assets\emotions\eyes.aep Logs
+log.csv
