@@ -11,11 +11,11 @@ date_response_list = ["Hoje é dia %d de *%mmonth*.","Hoje é dia *%dday* de *%m
 weekday_response_list = ["Hoje é *%wweekdayy*.", "*%wweekdayy*.", "Hoje é *%wweekdayy*, dia *%dday*.", "*%wweekdayy*, dia *%dday*."]
 year_response_list = ["Estamos no ano de %Y.","Estamos no ano %Y.","Estamos no ano de *%Yyear*.","Estamos em %Y.","%Y.","Estamos em *%Yyear*."]
 
-time_command_list = ['horas sao','quantas horas','horas agora','que horas']
+time_command_list = ['horas sao','quantas horas','horas agora','que horas sao']
 
 def detect_time(input):
   for x in time_command_list:
-    if x in time_command_list:
+    if input in x:
       return True
   return False
 
