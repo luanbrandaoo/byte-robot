@@ -1,25 +1,59 @@
-install python 3.8
 
-install espeak
-sudo apt install espeak
+# Byte - Server
 
-install ffmpeg
-sudo apt install ffmpeg
+The Byte Robot is a school project, with the aim of building an interactive and intelligent autonomous robot.
 
-install requirements
-pip install -r requirements.txt
 
-install ngrok
 
-set api keys on credentials.json
-example:
+
+## Installing
+
+- Install python 3.9
+
+- Install espeak 
+```bash
+  sudo apt install espeak
+```
+
+- Install ffmpeg
+```bash
+  sudo apt install ffmpeg
+```
+
+- Install requirements
+```bash
+  pip install -r requirements.txt
+```
+
+- Install ngrok
+
+- Set api keys on credentials.json
+```bash
 {
   "openweathermap": ""
 }
+```
 
-start server running main.py
+- Start server running main.py
 
-credits:
-https://github.com/sudharsanbaskars/AI-Chatbot
-https://github.com/basmilius/weather-icons
-https://icons8.com
+### Using docker
+
+```bash
+docker run --network="host" -it byte
+```
+
+
+## Environment Variables
+
+To run this project, you will need to add the following environment variables to "modules/credentials.json"
+```bash
+{
+  "openweathermap": ""
+}
+```
+## Credits
+
+ - [sudharsanbaskars/AI-Chatbot](https://github.com/sudharsanbaskars/AI-Chatbot)
+ - [basmilius/weather-icons](https://github.com/basmilius/weather-icons)
+ - [Icons8](https://icons8.com)
+
