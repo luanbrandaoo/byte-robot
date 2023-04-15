@@ -76,14 +76,14 @@ def get_response(sentence):
 	X = X.reshape(1, X.shape[0])
 	X = torch.from_numpy(X)
 
-	output = model(X)
+	output = model(X.cuda())
 	_, predicted = torch.max(output, dim=1)
 
 	tag = tags[predicted.item()]
 
 	probs = torch.softmax(output, dim=1)
 	prob = probs[0][predicted.item()]
-	#print(prob.item())
+	print(prob.item())
 	if prob.item() > 0.99:
 		for intent in intents["intents"]:
 			if tag == intent["tag"]:

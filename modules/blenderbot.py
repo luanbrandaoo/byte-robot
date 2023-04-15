@@ -11,5 +11,5 @@ model = BlenderbotForConditionalGeneration.from_pretrained(model_name)
 
 def blenderbot(inputMsg):
   inputs = tokenizer(inputMsg, return_tensors="pt")
-  result = model.generate(**inputs)
+  result = model.generate(**inputs).to('cuda')
   return str(tokenizer.decode(result[0])).replace('<s>','').replace('</s>','')
