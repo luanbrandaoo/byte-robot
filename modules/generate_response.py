@@ -1,6 +1,4 @@
-from ast import Return
 import unidecode
-from random import choice
 
 if __name__ == "__main__":
     from AItranslater import *
@@ -17,31 +15,31 @@ else:
     from modules.wikipedia_search import detect_search
     from modules.get_time import detect_time
 
-def detect_name(input):
-    for x in ['seu nome','voce se chama','quem e voce']:
-        if x in input:
-            return True
-    return False
 
 def generate_response(input):
     input_rem = unidecode.unidecode(input).strip().lower()
-    if detect_name(input_rem) == True:
-        botreply = choice(['Meu nome é Byte.','Me chamo Byte.','Sou o Byte.'])
-    elif detect_time(input_rem) == True:
-        print("get time")
-        botreply = 'execute_action{get_time(time)}'
-    else:
-        botreply = get_response(input_rem)
-    #print(botreply)
+    input_rem2 = input_rem.replace('?','').replace('.','').replace(',','').replace('!','')
+
+    botreply = get_response(input_rem)
+    print(botreply)
+
     if botreply == 'error':
-        enInput = translateToEN(input)
-        reply = blenderbot(enInput)
-        PtReply = translateFromEN(reply)
-        botreply = PtReply
-        #print('English translation: '+enInput)
-        #print('Generated response: '+reply)
-        #print('Portuguese translation: '+PtReply)
-    botreply = str(botreply).replace('Sara','Byte').replace('byte','Byte').strip()
+        if detect_calc(input_rem2) == True:
+            botreply = 'execute_action{calculate()}'
+        elif detect_search(input_rem2) == True:
+            botreply = 'execute_action{search()}'
+        elif detect_time(input_rem2) == True:
+            botreply = 'execute_action{get_time(time)}'
+        else:
+            enInput = translateToEN(input)
+            reply = blenderbot(enInput)
+            PtReply = translateFromEN(reply)
+            botreply = PtReply
+            #print('English translation: '+enInput)
+            #print('Generated response: '+reply)
+            #print('Portuguese translation: '+PtReply)
+
+    # for blenderbot: botreply = str(botreply).replace('Sara','Byte').replace('byte','Byte').strip()
     #print(botreply)
     return botreply
 
