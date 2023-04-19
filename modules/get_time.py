@@ -68,6 +68,12 @@ def get_time(response):
           hours = 'meia-noite'
         elif number == '01':
           hours = 'uma hora'
+        elif number == '02':
+          hours = 'duas horas'
+        elif number == '21':
+          hours = 'vinte e uma horas'
+        elif number == '22':
+          hours = 'vinte e duas horas'
         else:
           hours = num2words(number,lang='pt-br')+' horas'
         response = response[:index-3]+hours+response[index+5:]
