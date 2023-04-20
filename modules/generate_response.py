@@ -2,15 +2,15 @@ import unidecode
 
 if __name__ == "__main__":
     from AItranslater import *
-    from blenderbot import *
-    from chatbot import get_response
+    from dialoGPT import *
+    from chatbot import get_chatterbot_response
     from calc import detect_calc
     from wikipedia_search import detect_search
     from get_time import detect_time
 else:
     from modules.AItranslater import *
-    from modules.blenderbot import *
-    from modules.chatbot import get_response
+    from modules.dialoGPT import *
+    from modules.chatbot import get_chatterbot_response
     from modules.calc import detect_calc
     from modules.wikipedia_search import detect_search
     from modules.get_time import detect_time
@@ -20,7 +20,7 @@ def generate_response(input):
     input_rem = unidecode.unidecode(input).strip().lower()
     input_rem2 = input_rem.replace('?','').replace('.','').replace(',','').replace('!','')
 
-    botreply = get_response(input_rem)
+    botreply = get_chatterbot_response(input_rem)
     print(botreply)
 
     if botreply == 'error':
@@ -32,7 +32,7 @@ def generate_response(input):
             botreply = 'execute_action{get_time(time)}'
         else:
             enInput = translateToEN(input)
-            reply = blenderbot(enInput)
+            reply = dialoGPT(enInput)
             PtReply = translateFromEN(reply)
             botreply = PtReply
             #print('English translation: '+enInput)

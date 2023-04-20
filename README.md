@@ -20,9 +20,21 @@ The Byte Robot is a school project, with the aim of building an interactive and 
   sudo apt install ffmpeg
 ```
 
-- Install requirements
+- Install chatterbot
+```bash
+  git clone https://github.com/gunthercox/ChatterBot.git
+  cd ChatterBot-master
+  python3 setup.py install
+```
+
+- Install other requirements
 ```bash
   pip install -r requirements.txt
+```
+
+- Install spacy portuguese models
+```bash
+  python3 -m spacy download pt_core_news_lg
 ```
 
 - Install ngrok

@@ -14,3 +14,6 @@ tools/data.pth
 tools/intends.json
 front-end\assets\emotions\eyes.aep Logs
 log.csv
+chatterbot_database.sqlite3
+chatterbot_database.sqlite3-shm
+chatterbot_database.sqlite3-wal
