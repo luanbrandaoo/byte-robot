@@ -15,6 +15,7 @@ def log(input,actions):
 
 
 def main(input):
+  input = input.strip().lower()
   response = generate_response(input)
   #print(response)
   speech = response.split('execute_action')[0].strip().capitalize()
@@ -62,7 +63,10 @@ def action_processor(action,input):
     return "print({})".format(action_text), "speak({})".format(action_sound),"emotion(neutral)"
   elif 'weather(' in action:
     category = action.replace('weather(','')[:-1]
-    action_data = weather(category,'vassouras')
+    if 'aftertm' in category:
+      if 'depois' not in input or ' pós' not in input:
+        category = 'tomorrow'
+    action_data = weather(category,'vassouras',input)
     action_execute = action_data[0]
     action_text = action_data[1]
     action_mode = action_data[2]
