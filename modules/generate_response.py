@@ -1,4 +1,5 @@
 import unidecode
+from random import choice
 
 if __name__ == "__main__":
     from AItranslater import *
@@ -15,6 +16,7 @@ else:
     from modules.wikipedia_search import detect_search
     from modules.get_time import detect_time
 
+error_responses = ["Desculpe, não entendi"]
 
 def generate_response(input):
     input_rem = unidecode.unidecode(input).strip().lower()
@@ -38,9 +40,9 @@ def generate_response(input):
             #print('English translation: '+enInput)
             #print('Generated response: '+reply)
             #print('Portuguese translation: '+PtReply)
-
-    # for blenderbot: botreply = str(botreply).replace('Sara','Byte').replace('byte','Byte').strip()
-    #print(botreply)
+        
+        if botreply.strip() == '':
+            botreply = choice(error_responses)
     return botreply
 
 if __name__ == "__main__":
