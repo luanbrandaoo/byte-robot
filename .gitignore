@@ -1,19 +1,1 @@
-.env/
-.cache/
-__pycache__/
 test/
-modules/.cache/
-modules/__pycache__/
-modules/credentials.json
-tools/piadas byte.xlsx
-tools/cumprimentos.csv
-tools/ativarcomandos.csv
-tools/perguntaserespostas.csv
-tools/falas byte.xlsx
-tools/data.pth
-tools/intends.json
-front-end\assets\emotions\eyes.aep Logs
-log.csv
-chatterbot_database.sqlite3
-chatterbot_database.sqlite3-shm
-chatterbot_database.sqlite3-wal
