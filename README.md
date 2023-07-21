@@ -1,12 +1,12 @@
 
-# Byte - Server
+# Byte Robot
 
 The Byte Robot is a school project, with the aim of building an interactive and intelligent autonomous robot.
 
 
+## Server
 
-
-## Installing
+### Installing on server
 
 - Install python 3.9
 
@@ -55,7 +55,7 @@ docker run --network="host" -it byte
 ```
 
 
-## Environment Variables
+### Environment Variables
 
 To run this project, you will need to add the following environment variables to "modules/credentials.json"
 ```bash
@@ -63,9 +63,18 @@ To run this project, you will need to add the following environment variables to
   "openweathermap": ""
 }
 ```
+
 ## Credits
 
  - [sudharsanbaskars/AI-Chatbot](https://github.com/sudharsanbaskars/AI-Chatbot)
  - [basmilius/weather-icons](https://github.com/basmilius/weather-icons)
  - [Icons8](https://icons8.com)
 
+
+## Other
+
+#### The "tools" folder includes some useful files for the development.
+
+- "train_chatterbot.py" can be used to train the chatterbot library.
+
+- "xlsx_to_json.py" can be used to convert an xlsx file into a json file. It is specially used to write the jokes file.
