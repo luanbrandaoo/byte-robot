@@ -53,7 +53,7 @@ def action_processor(action,input):
     action_sound = generate_voice(action_text)
     return "print({})".format(action_text), "speak({})".format(action_sound),"emotion(neutral)"
   elif 'music(' in action:
-    action_text = 'Ainda não consigo reproduzir músicas, mas vou conseguir no próximo update.'
+    action_text = 'Ainda não consigo reproduzir músicas, mas vou conseguir nos próximos updates.'
     action_sound = generate_voice(action_text)
     return "print({})".format(action_text), "speak({})".format(action_sound),"emotion(sad)"
   elif 'get_time(' in action:
