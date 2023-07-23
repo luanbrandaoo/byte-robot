@@ -3,8 +3,8 @@
 #include "display_image.h"
 #include "display_eyes.h"
 
-
 Adafruit_ST7735 tft = Adafruit_ST7735(TFT_CS, TFT_DC, TFT_RST);
+bool isSendingImage = false;
 
 void setup() {
   Serial.begin(57600);
@@ -14,7 +14,6 @@ void setup() {
 }
 
 void loop() {
-  static bool isSendingImage = false;
   if (!isSendingImage) {
     if (Serial.available() >= 10) {
       char buf[11];
@@ -37,5 +36,14 @@ void loop() {
     }
   } else {
     displayUpdate(tft);
+    if (Serial.available() >= 4) {
+      char buf[5];
+      Serial.readBytes(buf, 4);
+      buf[4] = '\0';
+      if (strcmp(buf, "XXXX") == 0) {
+        isSendingImage = false;
+        Serial.println("Stopped");
+      }
+    }
   }
 }
