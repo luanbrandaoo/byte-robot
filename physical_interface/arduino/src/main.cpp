@@ -1,11 +1,4 @@
-#include <Adafruit_GFX.h>
-#include <Adafruit_ST7735.h>
-#include "display_image.h"
-#include "display_eyes.h"
-#include "display_searchicon.h"
-
-Adafruit_ST7735 tft = Adafruit_ST7735(TFT_CS, TFT_DC, TFT_RST);
-bool isSendingImage = false;
+#include "main.h"
 
 void setup() {
   Serial.begin(57600);
