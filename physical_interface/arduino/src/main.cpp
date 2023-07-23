@@ -2,6 +2,7 @@
 #include <Adafruit_ST7735.h>
 #include "display_image.h"
 #include "display_eyes.h"
+#include "display_searchicon.h"
 
 Adafruit_ST7735 tft = Adafruit_ST7735(TFT_CS, TFT_DC, TFT_RST);
 bool isSendingImage = false;
@@ -32,6 +33,9 @@ void loop() {
       } else if (strcmp(buf, "emotionsad") == 0) {
         Serial.println("emotion");
         sadEyes(tft);
+      } else if (strcmp(buf, "searchicon") == 0) {
+        Serial.println("search");
+        searchIcon();
       }
     }
   } else {
