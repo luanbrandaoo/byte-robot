@@ -1,5 +1,5 @@
-#ifndef DISPLAY_FUNCTIONS_H
-#define DISPLAY_FUNCTIONS_H
+#ifndef DISPLAY_IMAGE_H
+#define DISPLAY_IMAGE_H
 
 #include <Adafruit_GFX.h>
 #include <Adafruit_ST7735.h>
@@ -16,4 +16,4 @@ extern int current_pixel;
 void displayUpdate(Adafruit_ST7735 &tft);
 uint16_t makeColor(const char* buf);
 
-#endif // DISPLAY_FUNCTIONS_H
+#endif // DISPLAY_IMAGE_H
