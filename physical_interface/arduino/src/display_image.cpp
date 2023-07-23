@@ -51,6 +51,40 @@ void displayUpdate(Adafruit_ST7735 &tft) {
   }
 }
 
+void displayUpdateIndividually(Adafruit_ST7735 &tft) {
+  if (isSendingIndividualPixels && Serial.available() >= 12) {
+    memset(buf, 0, BUFFER_SIZE);
+    num_pixels = 0;
+    current_pixel = 0;
+
+    while (Serial.available() && current_pixel < BUFFER_SIZE - 1) {
+      buf[current_pixel] = Serial.read();
+      if (buf[current_pixel] == '\n') {
+        break;
+      }
+      current_pixel++;
+      num_pixels++;
+    }
+    buf[current_pixel] = '\0';
+
+    for (int i = 0; i < num_pixels; i += 12) {
+      if (strncmp(&buf[i], "XXXXXXXXXXXX", 12) == 0) {
+        isSendingIndividualPixels = false;
+        Serial.println("end");
+        return;
+      }
+
+      int X, Y;
+      uint16_t color;
+
+      sscanf(&buf[i], "%d,%d,%4hx", &X, &Y, &color);
+      uint16_t pixel = makeColor(&buf[i + 8]);
+
+      tft.drawPixel(X, Y, pixel);
+    }
+  }
+}
+
 uint16_t makeColor(const char* buf) {
   uint16_t color;
   sscanf(buf, "%4x", &color);

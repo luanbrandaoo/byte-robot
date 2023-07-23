@@ -8,14 +8,19 @@ void setup() {
 }
 
 void loop() {
-  if (!isSendingImage) {
+  if (!isSendingImage && !isSendingIndividualPixels) {
     if (Serial.available() >= 10) {
       char buf[11];
       Serial.readBytes(buf, 10);
       buf[10] = '\0';
 
       if (strcmp(buf, "send_image") == 0) {
+        isSendingIndividualPixels = false;
         isSendingImage = true;
+        Serial.println("ok");
+      } else if (strcmp(buf, "send_pixel") == 0) {
+        isSendingImage = false;
+        isSendingIndividualPixels = true;
         Serial.println("ok");
       } else if (strcmp(buf, "emotionneu") == 0) {
         Serial.println("emotion");
@@ -31,7 +36,9 @@ void loop() {
         searchIcon();
       }
     }
-  } else {
+  } else if (isSendingImage == true) {
     displayUpdate(tft);
+  } else if (isSendingIndividualPixels == true) {
+    displayUpdateIndividually(tft);
   }
 }
