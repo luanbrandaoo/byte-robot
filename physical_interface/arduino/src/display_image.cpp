@@ -6,8 +6,11 @@ char buf[BUFFER_SIZE];
 int num_pixels = 0;
 int current_pixel = 0;
 
+int startX;
+int startY;
+
 void displayUpdate(Adafruit_ST7735 &tft) {
-  if (Serial.available() >= 4) {
+  if (isSendingImage && Serial.available() >= 4) {
     memset(buf, 0, BUFFER_SIZE);
     num_pixels = 0;
     current_pixel = 0;
@@ -26,6 +29,14 @@ void displayUpdate(Adafruit_ST7735 &tft) {
     static int y = 0;
 
     for (int i = 0; i < num_pixels; i += 4) {
+      if (strncmp(&buf[i], "XXXX", 4) == 0) {
+        isSendingImage = false;
+        startX = 0;
+        startY = 0;
+        Serial.println("end");
+        return;
+      }
+
       uint16_t pixel = makeColor(&buf[i]);
 
       tft.drawPixel(x, y, pixel);

@@ -12,6 +12,7 @@ extern const int BUFFER_SIZE;
 extern char buf[];
 extern int num_pixels;
 extern int current_pixel;
+extern bool isSendingImage;
 
 void displayUpdate(Adafruit_ST7735 &tft);
 uint16_t makeColor(const char* buf);

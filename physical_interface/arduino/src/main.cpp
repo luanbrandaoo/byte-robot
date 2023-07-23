@@ -36,14 +36,5 @@ void loop() {
     }
   } else {
     displayUpdate(tft);
-    if (Serial.available() >= 4) {
-      char buf[5];
-      Serial.readBytes(buf, 4);
-      buf[4] = '\0';
-      if (strcmp(buf, "XXXX") == 0) {
-        isSendingImage = false;
-        Serial.println("Stopped");
-      }
-    }
   }
 }
