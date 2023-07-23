@@ -6,8 +6,8 @@ char buf[BUFFER_SIZE];
 int num_pixels = 0;
 int current_pixel = 0;
 
-int startX;
-int startY;
+int x = 0;
+int y = 0;
 
 void displayUpdate(Adafruit_ST7735 &tft) {
   if (isSendingImage && Serial.available() >= 4) {
@@ -25,14 +25,11 @@ void displayUpdate(Adafruit_ST7735 &tft) {
     }
     buf[current_pixel] = '\0';
 
-    static int x = 0;
-    static int y = 0;
-
     for (int i = 0; i < num_pixels; i += 4) {
       if (strncmp(&buf[i], "XXXX", 4) == 0) {
         isSendingImage = false;
-        startX = 0;
-        startY = 0;
+        x = 0;
+        y = 0;
         Serial.println("end");
         return;
       }
