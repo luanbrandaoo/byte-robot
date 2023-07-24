@@ -1,20 +1,12 @@
 import unidecode
 from random import choice
 
-if __name__ == "__main__":
-    from AItranslater import *
-    from dialoGPT import *
-    from chatbot import get_chatterbot_response
-    from calc import detect_calc
-    from wikipedia_search import detect_search
-    from get_time import detect_time
-else:
-    from modules.AItranslater import *
-    from modules.dialoGPT import *
-    from modules.chatbot import get_chatterbot_response
-    from modules.calc import detect_calc
-    from modules.wikipedia_search import detect_search
-    from modules.get_time import detect_time
+from AItranslater import *
+from dialoGPT import *
+from chatbot import get_chatterbot_response
+from calc import detect_calc
+from wikipedia_search import detect_search
+from get_time import detect_time
 
 error_responses = ["Desculpe, não entendi"]
 

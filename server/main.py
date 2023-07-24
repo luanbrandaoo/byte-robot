@@ -1,11 +1,14 @@
-from modules.generate_response import *
-from modules.generate_voice import *
-from modules.music import *
-from modules.jokes import *
-from modules.wikipedia_search import *
-from modules.get_time import *
-from modules.weather import *
-from modules.calc import *
+import sys
+sys.path.append("modules")
+
+from generate_response import *
+from generate_voice import *
+from music import *
+from jokes import *
+from wikipedia_search import *
+from get_time import *
+from weather import *
+from calc import *
 import json
 
 log_file = open('log.csv','a')
