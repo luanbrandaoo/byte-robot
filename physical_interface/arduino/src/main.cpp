@@ -1,7 +1,7 @@
 #include "main.h"
 
 void setup() {
-  Serial.begin(57600);
+  Serial.begin(150000);
   tft.initR(INITR_BLACKTAB);
   tft.setRotation(3);
   tft.fillScreen(ST7735_BLACK);
