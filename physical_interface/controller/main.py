@@ -53,4 +53,5 @@ def response():
     return output_request
 
 webbrowser.open('http://127.0.0.1:5000')
+s.write('emotionneu'.encode())
 app.run(host="127.0.0.1", port=5000, debug=False)
