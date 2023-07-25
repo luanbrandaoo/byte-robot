@@ -31,6 +31,6 @@ void loop() {
       }
     }
   } else {
-    displayUpdateIndividually(tft);
+    displayPixels(tft);
   }
 }

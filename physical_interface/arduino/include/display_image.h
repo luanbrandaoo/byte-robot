@@ -10,7 +10,7 @@ extern int num_pixels;
 extern int current_pixel;
 extern bool isSendingImage;
 
-void displayUpdateIndividually(Adafruit_ST7735 &tft);
+void displayPixels(Adafruit_ST7735 &tft);
 uint16_t makeColor(const char* buf);
 
 #endif // DISPLAY_IMAGE_H

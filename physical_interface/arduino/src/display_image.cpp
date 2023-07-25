@@ -6,7 +6,7 @@ char buf[BUFFER_SIZE];
 int num_pixels = 0;
 int current_pixel = 0;
 
-void displayUpdateIndividually(Adafruit_ST7735 &tft) {
+void displayPixels(Adafruit_ST7735 &tft) {
   if (isSendingImage && Serial.available() >= 12) {
     memset(buf, 0, BUFFER_SIZE);
     num_pixels = 0;
