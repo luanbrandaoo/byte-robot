@@ -9,9 +9,7 @@ extern char buf[];
 extern int num_pixels;
 extern int current_pixel;
 extern bool isSendingImage;
-extern bool isSendingIndividualPixels;
 
-void displayUpdate(Adafruit_ST7735 &tft);
 void displayUpdateIndividually(Adafruit_ST7735 &tft);
 uint16_t makeColor(const char* buf);
 
