@@ -3,8 +3,8 @@ import os
 from ports import serial_ports
 import serial
 from time import sleep
-from send_images import image_to_pixel_list, send_image
-from send_arduino import send_actions
+from send_images import send_image
+from send_arduino import send_actions, loading_icon, send_emotion
 import requests
 import webbrowser
 
@@ -47,11 +47,12 @@ def getStyleFile(reqPath):
 
 @app.route("/response", methods=["GET"])
 def response():
+    loading_icon(s)
     input_request = request.args.get("input")
     output_request = requests.get(f'{main_server}/response?input={input_request}').content
     send_actions(s,output_request.decode())
     return output_request
 
 webbrowser.open('http://127.0.0.1:5000')
-s.write('emotionneu'.encode())
+send_emotion(s,'neutral')
 app.run(host="127.0.0.1", port=5000, debug=False)
