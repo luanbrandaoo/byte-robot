@@ -40,12 +40,15 @@ def send_image(s,image_path):
     y = 0
 
     for pixel in pixel_list_16bits:
+        if pixel == 0:
+            p=p+1
+            continue
 
         y = (p//160)
         x = (p%160)
 
         s.write(f"{x:03},{y:03},{pixel:04x}\n".encode())
-
+        print(f"{x:03},{y:03},{pixel:04x}\n")
         p=p+1
     
     while 1:
