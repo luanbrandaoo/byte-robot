@@ -28,6 +28,12 @@ void loop() {
       } else if (strcmp(buf, "searchicon") == 0) {
         Serial.println("search");
         searchIcon();
+      } else if (strcmp(buf, "loadingico") == 0) {
+        Serial.println("loading");
+        loadingIcon();
+      } else if (strcmp(buf, "blackscree") == 0) {
+        Serial.println("black");
+        blackScreen();
       }
     }
   } else {

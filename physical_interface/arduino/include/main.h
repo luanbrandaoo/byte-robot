@@ -1,8 +1,7 @@
 #include <Adafruit_GFX.h>
 #include <Adafruit_ST7735.h>
 #include "display_image.h"
-#include "display_eyes.h"
-#include "display_searchicon.h"
+#include "display_icons.h"
 
 #define TFT_CS     10
 #define TFT_RST    8
