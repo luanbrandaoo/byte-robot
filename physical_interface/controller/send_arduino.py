@@ -13,6 +13,12 @@ def send_emotion(s,emotion):
             print("Emoção enviada")
             break 
 
+def loading_icon(s):
+    while 1:
+        s.write('loadingico'.encode())
+        if str(s.readline().decode()).strip() == 'loading':
+            print("Carregando...")
+            break 
 
 def send_actions(s,input):
     #create action list
