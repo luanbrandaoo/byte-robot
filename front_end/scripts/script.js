@@ -1,3 +1,12 @@
+let isListening = false
+
+document.addEventListener('keyup', event => {
+    // Verifica se a tecla pressionada é a tecla de espaço ('Space')
+    if (event.code === 'Space' && event.target.tagName !== 'TEXTAREA') {
+      voiceButton();
+    }
+  });
+  
 async function responseRequest(address) {
     $.ajax({
         url: address,
@@ -75,9 +84,16 @@ function receivedMessage(messageText) {
     document.getElementById("processing_message").remove()
 }
 
-function voiceRecognition() {
-    document.getElementById('voicebutton').classList.add("voiceanim");
-    setTimeout(() => {document.getElementById('voicebutton').classList.remove("voiceanim")}, 5000)
+function voiceButton() {
+    if (isListening) {
+        document.getElementById('voicebutton').classList.remove("voiceanim")
+        isListening = false
+        console.log('não ouvindo')
+      } else {
+        document.getElementById('voicebutton').classList.add("voiceanim")
+        isListening = true
+        console.log('ouvindo')
+      }
 }
 
 window.onload = updateScreen;
