@@ -69,7 +69,7 @@ def action_processor(action,input):
     if 'aftertm' in category:
       if 'depois' not in input or ' pós' not in input:
         category = 'tomorrow'
-    action_data = weather(category,'vassouras',input)
+    action_data = weather(category,'vassouras')
     action_execute = action_data[0]
     action_text = action_data[1]
     action_mode = action_data[2]
