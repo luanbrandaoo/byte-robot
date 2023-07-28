@@ -14,13 +14,15 @@ def generate_response(input):
     input_rem = unidecode.unidecode(input).strip().lower()
     input_rem2 = input_rem.replace('?','').replace('.','').replace(',','').replace('!','')
 
-    botreply = get_chatbot_response(input_rem)
+    if detect_calc(input_rem2) == True:
+        botreply = 'execute_action{calculate()}'
+    else:
+        botreply = get_chatbot_response(input_rem)
+        
     print(botreply)
 
     if botreply == 'error':
-        if detect_calc(input_rem2) == True:
-            botreply = 'execute_action{calculate()}'
-        elif detect_search(input_rem2) == True:
+        if detect_search(input_rem2) == True:
             botreply = 'execute_action{search()}'
         elif detect_time(input_rem2) == True:
             botreply = 'execute_action{get_time(time)}'
