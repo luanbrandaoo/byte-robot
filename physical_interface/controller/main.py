@@ -7,6 +7,7 @@ from send_images import send_image
 from send_arduino import send_actions, loading_icon, send_emotion
 import requests
 import webbrowser
+import threading
 
 available_ports = serial_ports()
 print('Portas disponíveis:')
@@ -50,7 +51,10 @@ def response():
     loading_icon(s)
     input_request = request.args.get("input")
     output_request = requests.get(f'{main_server}/response?input={input_request}').content
-    send_actions(s,output_request.decode())
+
+    send_actions_thread = threading.Thread(target=send_actions, args=(s, output_request.decode()))
+    send_actions_thread.start()
+
     return output_request
 
 webbrowser.open('http://127.0.0.1:5000')
