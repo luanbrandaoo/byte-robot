@@ -1,3 +1,7 @@
+from send_images import send_image
+import os
+
+weather_icon_path = os.path.abspath(os.path.join(os.path.dirname(__file__), './', 'weather_icons'))
 
 def send_emotion(s,emotion):
     if emotion == 'happy':
@@ -20,6 +24,13 @@ def loading_icon(s):
             print("Carregando...")
             break 
 
+def black_screen(s):
+    while 1:
+        s.write('blackscree'.encode())
+        if str(s.readline().decode()).strip() == 'black':
+            print("tela preta")
+            break 
+
 def send_actions(s,input):
     #create action list
     inputs_raw = input.split('", ')
@@ -38,4 +49,22 @@ def send_actions(s,input):
         
         if action.startswith('speak(') == False:
             print(action)
-        
+
+        if action.startswith('weather('):
+            emotion = action[8:-1]
+            send_weather(s,emotion)
+
+def send_weather(s,weather):
+    black_screen(s)
+    
+    if weather == 'chovendo_dia' or weather == 'chovendo_noite' or weather == 'chuviscando':
+        icon = 'chuviscando'
+    elif weather == 'nublado' or weather == 'parcialmente nublado' or weather == 'nevando' or weather == 'neblinado':
+        icon = 'nublado'
+    else:
+        icon = weather
+    
+    icon = icon+'.png'
+    
+    print(os.path.join(weather_icon_path, icon))
+    send_image(s,os.path.join(weather_icon_path, icon))
