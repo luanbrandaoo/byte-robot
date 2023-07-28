@@ -9,4 +9,5 @@ chatterbot_database.sqlite3-wal
 
 modules/.cache/
 modules/__pycache__/
+credentials.json
 modules/credentials.json
