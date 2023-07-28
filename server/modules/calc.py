@@ -13,7 +13,10 @@ def detect_calc(input):
         return False
     else:
         return False
-        
+
+def calc_voice(input):
+    output = input.replace('**',' elevado à ').replace('/',' dividido pra ').replace('*',' vezes ').replace('=',' igual à ')
+    return output
 
 def calc(input):
     input = input.lower().strip().replace('tres','três').replace('milhao','milhão').replace('milhoes','milhões').replace('bilhao','bilhão').replace('bilhoes','bilhões').replace('bilhao','bilhão').replace('trilhoes','trilhões')

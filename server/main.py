@@ -85,7 +85,7 @@ def action_processor(action,input):
     return "print({})".format(action_text), "speak({})".format(action_sound),"emotion(sad)"
   elif 'calculate(' in action:
     action_text = calc(input)
-    action_sound = generate_voice(action_text)
+    action_sound = generate_voice(calc_voice(action_text))
     return "print({})".format(action_text), "speak({})".format(action_sound),"emotion(neutral)"
   else:
     return action
