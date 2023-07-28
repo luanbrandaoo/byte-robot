@@ -33,7 +33,7 @@ def format_weather(weather):
     elif weather == 800:
         weather_name = 'limpo'
     elif 801 <= weather < 803:
-        weather_name = 'parcialmente nublado'
+        weather_name = 'parcialmente_nublado'
     elif 803 <= weather < 805:
         weather_name = 'nublado'
     return weather_name
