@@ -25,7 +25,7 @@ def format_weather(weather):
     elif 500 <= weather < 519:
         weather_name = 'chovendo'
     elif 519 <= weather < 600:
-        weather_name = 'chovendo forte'
+        weather_name = 'chovendo_forte'
     elif 600 <= weather < 700:
         weather_name = 'nevando'
     elif 700 <= weather < 800:
