@@ -1,12 +1,41 @@
-let isListening = false
+let isListening = false;
 
 document.addEventListener('keyup', event => {
-    // Verifica se a tecla pressionada é a tecla de espaço ('Space')
     if (event.code === 'Space' && event.target.tagName !== 'TEXTAREA') {
       voiceButton();
     }
   });
   
+class speechApi {
+  constructor() {
+    const SpeechToText = window.SpeechRecognition || window.webkitSpeechRecognition
+
+    this.speechApi = new SpeechToText()
+    this.speechApi.continuous = true
+    this.speechApi.lang = "pt-BR"
+    
+    this.speechApi.onresult = (e) => {
+      var resultIndex = e.resultIndex
+      var transcript = e.results[resultIndex][0].transcript
+
+      console.log(transcript)
+      document.getElementById("lastMessage").innerText = document.getElementById("lastMessage").innerText + ' ' + transcript
+      var chatHistory = document.getElementById("chat-history")
+      chatHistory.scrollTo(0, chatHistory.scrollHeight)
+    }
+  }
+
+  start() {
+    this.speechApi.start()
+  }
+
+  stop() {
+    this.speechApi.stop()
+  }
+}
+
+var speech = new speechApi()
+
 async function responseRequest(address) {
     $.ajax({
         url: address,
@@ -88,11 +117,25 @@ function voiceButton() {
     if (isListening) {
         document.getElementById('voicebutton').classList.remove("voiceanim")
         isListening = false
-        console.log('não ouvindo')
+        console.log('not listening')
+        speech.stop()
+        processing()
+        responseRequest("/response?input="+messageText)
+        document.getElementById("lastMessage").removeAttribute('id')
       } else {
         document.getElementById('voicebutton').classList.add("voiceanim")
         isListening = true
-        console.log('ouvindo')
+        console.log('listening')
+        var messageText = document.getElementById("message-to-send").value
+        var message = document.createElement('li')
+        time = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
+        message.setAttribute('class', 'message-list')
+        message.innerHTML = '<div class="message-data align-right"><span class="message-time timestamp">'+time+'</span><span class="message-time">Você (voz)</span><i class="fa fa-circle me"></i></div><div class="message user-message float-right" id="lastMessage">'+messageText+'</div>'
+        document.getElementById("message-to-send").value = ""
+        document.getElementById('chat-messages').appendChild(message)
+        var chatHistory = document.getElementById("chat-history")
+        chatHistory.scrollTo(0, chatHistory.scrollHeight)
+        speech.start()
       }
 }
 
