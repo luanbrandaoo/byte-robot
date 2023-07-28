@@ -52,7 +52,7 @@ def send_image(s,image_path):
         p=p+1
     
     while 1:
-        s.write("XXXX".encode())
+        s.write("XXXXXXXXXXXX".encode())
         if str(s.readline().decode()).strip() == 'end':
             print("Envio finalizado")
             break 
