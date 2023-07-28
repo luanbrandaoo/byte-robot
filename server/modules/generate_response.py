@@ -3,7 +3,7 @@ from random import choice
 
 from AItranslater import *
 from dialoGPT import *
-from chatbot import get_chatterbot_response
+from chatbot import get_chatbot_response
 from calc import detect_calc
 from wikipedia_search import detect_search
 from get_time import detect_time
@@ -14,7 +14,7 @@ def generate_response(input):
     input_rem = unidecode.unidecode(input).strip().lower()
     input_rem2 = input_rem.replace('?','').replace('.','').replace(',','').replace('!','')
 
-    botreply = get_chatterbot_response(input_rem)
+    botreply = get_chatbot_response(input_rem)
     print(botreply)
 
     if botreply == 'error':
