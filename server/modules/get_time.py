@@ -20,7 +20,7 @@ def detect_time(input):
   return False
 
 def get_time(response):
-    if response == 'time':
+    if response == 'hour':
       response = choice(time_response_list)
     elif response == 'date':
       response = choice(date_response_list)
