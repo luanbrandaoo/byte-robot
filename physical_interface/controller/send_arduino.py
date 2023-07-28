@@ -57,7 +57,7 @@ def send_actions(s,input):
 def send_weather(s,weather):
     black_screen(s)
     
-    if weather == 'chovendo_dia' or weather == 'chovendo_noite' or weather == 'chuviscando':
+    if weather == 'chovendo_dia' or weather == 'chovendo_noite' or weather == 'chuviscando' or weather == 'chovendo':
         icon = 'chuviscando'
     elif weather == 'nublado' or weather == 'parcialmente nublado' or weather == 'nevando' or weather == 'neblinado':
         icon = 'nublado'

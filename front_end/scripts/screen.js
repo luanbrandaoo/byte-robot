@@ -8,6 +8,12 @@ function cleanScreen() {
 }
 
 function weather(mode) {
+    if (mode === 'chovendo_dia' || mode === 'chovendo_noite' || mode === 'chovendo') {
+        mode = 'chuviscando'
+    } else if (mode === 'parcialmente nublado' || mode === 'nevando' || mode === 'neblinado') {
+        mode = 'nublado';
+    }
+
     const screen = document.getElementById('robot-screen')
     cleanScreen()
     var img = document.createElement('img')

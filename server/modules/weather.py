@@ -52,8 +52,8 @@ def weather(mode,location):
                 temp = x['main']['temp']
                 weather = int(x['weather'][0]['id'])
                 weather_name = format_weather(weather)
-                if weather_name == 'chovendo':
-                    weather_name = weather_name+'_dia'
+                '''if weather_name == 'chovendo':
+                    weather_name = weather_name+'_dia'''
                 break
         if mode.startswith('temperature'):
             celsius = int(temp)-273
@@ -75,11 +75,11 @@ def weather(mode,location):
             weather = int(requisicao.json()['weather'][0]['id'])
             weather_name = format_weather(weather)
             speakresponse = today_weather_list[0].format(weather_name,location)
-            if weather_name == 'chovendo':
+            '''if weather_name == 'chovendo':
                 if 6 < int(datetime.now().strftime("%H")) < 18:
                     weather_name = weather_name+'_dia'
                 else:
-                    weather_name = weather_name+'_noite'
+                    weather_name = weather_name+'_noite'''
             return weather_name,speakresponse,'weather'
         if mode.startswith('temperature'):
             celsius = (int(requisicao.json()['main']['temp']))-273
