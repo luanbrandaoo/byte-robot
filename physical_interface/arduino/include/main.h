@@ -2,6 +2,7 @@
 #include <Adafruit_ST7735.h>
 #include "display_image.h"
 #include "display_icons.h"
+#include "move.h"
 
 #define TFT_CS     10
 #define TFT_RST    8

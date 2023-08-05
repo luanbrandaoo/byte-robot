@@ -2,6 +2,11 @@
 
 void setup() {
   Serial.begin(150000);
+  pinMode(2, OUTPUT);
+  pinMode(3, OUTPUT);
+  pinMode(5, OUTPUT);
+  pinMode(7, OUTPUT);
+  stopmove();
   tft.initR(INITR_BLACKTAB);
   tft.setRotation(3);
   tft.fillScreen(ST7735_BLACK);
@@ -34,6 +39,18 @@ void loop() {
       } else if (strcmp(buf, "blackscree") == 0) {
         Serial.println("black");
         blackScreen();
+      } else if (strcmp(buf, "movefrontt") == 0) {
+        Serial.println("move");
+        movefront();
+      } else if (strcmp(buf, "movebackkk") == 0) {
+        Serial.println("move");
+        moveback();
+      } else if (strcmp(buf, "moverightt") == 0) {
+        Serial.println("move");
+        moveright();
+      } else if (strcmp(buf, "movelefttt") == 0) {
+        Serial.println("move");
+        moveleft();
       }
     }
   } else {

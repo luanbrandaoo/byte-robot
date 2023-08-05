@@ -1,4 +1,5 @@
 import sys
+from random import choice
 sys.path.append("modules")
 
 from generate_response import *
@@ -87,6 +88,13 @@ def action_processor(action,input):
     action_text = calc(input)
     action_sound = generate_voice(calc_voice(action_text))
     return "print({})".format(action_text), "speak({})".format(action_sound),"emotion(neutral)"
+  elif 'move(' in action:
+    action_text = 'Claro!'
+    action_sound = generate_voice(action_text)
+    action_mode = action[5:-1]
+    if action_mode == 'side':
+      action_mode = choice(['right','left'])
+    return "print({})".format(action_text), "speak({})".format(action_sound),"emotion(happy)",f"move({action_mode})"
   else:
     return action
 

@@ -53,6 +53,10 @@ def send_actions(s,input):
         if action.startswith('weather('):
             emotion = action[8:-1]
             send_weather(s,emotion)
+        
+        if action.startswith('move('):
+            emotion = action[5:-1]
+            move(s,emotion)
 
 def send_weather(s,weather):
     black_screen(s)
@@ -68,3 +72,20 @@ def send_weather(s,weather):
     
     print(os.path.join(weather_icon_path, icon))
     send_image(s,os.path.join(weather_icon_path, icon))
+
+def move(s,side):
+    global send
+    if side == 'front':
+        send = 'movefrontt'
+    elif side == 'back':
+        send = 'movebackkk'
+    elif side == 'right':
+        send = 'moverightt'
+    elif side == 'left':
+        send = 'movelefttt'
+    
+    while 1:
+        s.write(send.encode())
+        if str(s.readline().decode()).strip() == 'move':
+            print("Movimento enviado")
+            break 
