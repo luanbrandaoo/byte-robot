@@ -80,6 +80,10 @@ function getCommands(commands) {
     }
 }
 
+function fixMessageText(input) {
+  return input.replace('+', '%2B').replace('−', '-').replace('(', '').replace(')', '').replace('√', 'raizquadrada').replace('∛', 'raizcubica').replace('raiz quadrada', 'raizquadrada').replace('raiz cubica', 'raizcubica')
+}
+
 function updateScreen() {
     var image = document.getElementById('robot-image')
     var imagepos = image.getBoundingClientRect()
@@ -92,6 +96,7 @@ function updateScreen() {
 
 function sendMessage() {
     var messageText = document.getElementById("message-to-send").value
+    messageText = fixMessageText(messageText)
     if (messageText.replace('\n', '').replace(' ', '') == '') return
     var message = document.createElement('li')
     time = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
@@ -126,7 +131,7 @@ function voiceButton() {
           document.getElementById("last-message-div").remove()
         } else {
           processing()
-          responseRequest("/response?input="+speechtext.trim())
+          responseRequest("/response?input="+fixMessageText(speechtext).trim())
           document.getElementById("lastMessage").removeAttribute('id')
           document.getElementById("last-message-div").removeAttribute('id')
         }
