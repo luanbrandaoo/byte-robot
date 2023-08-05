@@ -1,4 +1,5 @@
 let isListening = false;
+var speechtext = ''
 
 document.addEventListener('keyup', event => {
     if (event.code === 'Space' && event.target.tagName !== 'TEXTAREA') {
@@ -13,19 +14,21 @@ class speechApi {
     this.speechApi = new SpeechToText()
     this.speechApi.continuous = true
     this.speechApi.lang = "pt-BR"
-    
+
     this.speechApi.onresult = (e) => {
       var resultIndex = e.resultIndex
       var transcript = e.results[resultIndex][0].transcript
 
       console.log(transcript)
       document.getElementById("lastMessage").innerText = document.getElementById("lastMessage").innerText + ' ' + transcript
+      speechtext = speechtext + ' ' + transcript
       var chatHistory = document.getElementById("chat-history")
       chatHistory.scrollTo(0, chatHistory.scrollHeight)
     }
   }
 
   start() {
+    speechtext = ''
     this.speechApi.start()
   }
 
@@ -119,9 +122,14 @@ function voiceButton() {
         isListening = false
         console.log('not listening')
         speech.stop()
-        processing()
-        responseRequest("/response?input="+messageText)
-        document.getElementById("lastMessage").removeAttribute('id')
+        if (speechtext.trim() == '') {
+          document.getElementById("last-message-div").remove()
+        } else {
+          processing()
+          responseRequest("/response?input="+speechtext.trim())
+          document.getElementById("lastMessage").removeAttribute('id')
+          document.getElementById("last-message-div").removeAttribute('id')
+        }
       } else {
         document.getElementById('voicebutton').classList.add("voiceanim")
         isListening = true
@@ -130,6 +138,7 @@ function voiceButton() {
         var message = document.createElement('li')
         time = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
         message.setAttribute('class', 'message-list')
+        message.setAttribute('id', 'last-message-div')
         message.innerHTML = '<div class="message-data align-right"><span class="message-time timestamp">'+time+'</span><span class="message-time">Você (voz)</span><i class="fa fa-circle me"></i></div><div class="message user-message float-right" id="lastMessage">'+messageText+'</div>'
         document.getElementById("message-to-send").value = ""
         document.getElementById('chat-messages').appendChild(message)
