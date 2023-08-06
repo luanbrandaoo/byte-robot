@@ -48,7 +48,7 @@ def weather(mode,location):
         location = requisicao.json()['city']['name']
         weather_list = requisicao.json()['list']
         for x in weather_list:
-            if x['dt_txt'].startswith(datetime.now().strftime("%Y-%m-{}".format(int(datetime.now().strftime("%d"))+day))) and '12:00:00' in x['dt_txt']:
+            if x['dt_txt'].startswith(datetime.now().strftime("%Y-%m-{}".format(str(int(datetime.now().strftime("%d"))+day).zfill(2)))) and '12:00:00' in x['dt_txt']:
                 temp = x['main']['temp']
                 weather = int(x['weather'][0]['id'])
                 weather_name = format_weather(weather)
