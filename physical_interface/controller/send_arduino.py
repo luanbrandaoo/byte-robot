@@ -20,9 +20,12 @@ def send_emotion(s,emotion):
 def loading_icon(s):
     while 1:
         s.write('loadingico'.encode())
-        if str(s.readline().decode()).strip() == 'loading':
-            print("Carregando...")
-            break 
+        try:
+            if str(s.readline().decode()).strip() == 'loading':
+                print("Carregando...")
+                break 
+        except:
+            break
 
 def black_screen(s):
     while 1:
