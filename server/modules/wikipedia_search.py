@@ -59,6 +59,7 @@ def crop_face(input_image_path, target_size=(160, 128)):
 
     except Exception as e:
         print(f"Erro ao cortar a imagem: {str(e)}")
+        return error
 
 wikipedia.set_lang("pt")
 
@@ -98,7 +99,7 @@ def wikipedia_search(query):
     remove = ['o que e a ','o que foi a ','que foi a ','o que e a ','o que e o ','o que foi o ','que foi o ','o que e o ','o que foi','que foi']
 
     for x in remove:
-        query = query.replace(x,' ')
+        query = query.replace('é','').replace(x,' ')
 
     query = remove_specific_words(query.replace('  ',' ').strip(), words_to_remove)
     
@@ -109,10 +110,15 @@ def wikipedia_search(query):
 
         summary_short = ". ".join(wp_page.summary.split(". ")[:1]) + "."
 
-        if main_image:
-            return [summary_short, crop_face(main_image)]
+        cropimage = crop_face(main_image)
+
+        if cropimage == 'error':
+            return summary_short
         else:
-            return choice(error_responses)
+            if main_image:
+                return [summary_short, cropimage]
+            else:
+                return choice(error_responses)
     except:
         return choice(error_responses)
 
