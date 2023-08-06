@@ -77,6 +77,9 @@ function getCommands(commands) {
         if (commands[i].startsWith('emotion(') == true ) {
             emotion(commands[i].replace('emotion(', '').slice(0, -1))
         }
+        if (commands[i].startsWith('image(') == true ) {
+          imageScreen(commands[i].replace('image(', '').slice(0, -1))
+      }
     }
 }
 

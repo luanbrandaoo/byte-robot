@@ -47,6 +47,15 @@ function emotion(mode) {
     screen.appendChild(img)
 }
 
+function imageScreen(imgbase) {
+    const screen = document.getElementById('robot-screen')
+    cleanScreen()
+    var img = document.createElement('img')
+    img.setAttribute('class', 'animated-icons')
+    img.setAttribute('src', "data:image/png;base64, "+imgbase)
+    screen.appendChild(img)
+}
+
 function processingScreen() {
     const screen = document.getElementById('robot-screen')
     cleanScreen()
