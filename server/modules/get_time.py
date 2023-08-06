@@ -34,7 +34,7 @@ def get_time(response):
         if 0<=number<6:
             greeting = "uma boa madrugada"
         elif 6<=number<12:
-            greeting = "uma bom dia"
+            greeting = "um bom dia"
         elif 12<=number<18:
             greeting = "uma boa tarde"
         elif 18<=number:
