@@ -60,6 +60,7 @@ def send_actions(s,input):
 
         if action.startswith('image('):
             emotion = action[6:-1]
+            black_screen(s)
             send_image(s,emotion)
 
 def send_weather(s,weather):
