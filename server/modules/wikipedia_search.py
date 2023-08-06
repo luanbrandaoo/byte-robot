@@ -62,7 +62,7 @@ def crop_face(input_image_path, target_size=(160, 128)):
 
 wikipedia.set_lang("pt")
 
-search_init_list = ['o que e','o que foi','quem foi','quem e','quando foi','quando e','como e','pesquise','como foi','como aconteceu','onde']
+search_init_list = ['que e','que foi','o que e','o que foi','quem foi','quem e','quando foi','quando e','como e','pesquise','como foi','como aconteceu','onde']
 error_responses = ["Desculpe, não consegui encontrar"]
 
 def detect_search(input):
@@ -94,9 +94,13 @@ def extract_main_image(page_title):
     return main_image
 
 def wikipedia_search(query):
-    words_to_remove = ['o que e','que foi','quem','quando','como','pesquise','sobre','onde','foi','aconteceu','diga','fale','explique','me','quem']
+    words_to_remove = ['quem','quando','como','pesquise','sobre','onde','foi','aconteceu','diga','fale','explique','me','quem']
+    remove = ['o que e a ','o que foi a ','que foi a ','o que e a ','o que e o ','o que foi o ','que foi o ','o que e o ','o que foi','que foi']
 
-    query = remove_specific_words(query, words_to_remove)
+    for x in remove:
+        query = query.replace(x,' ')
+
+    query = remove_specific_words(query.replace('  ',' ').strip(), words_to_remove)
     
     print('wikipedia_search: '+query)
     try:
