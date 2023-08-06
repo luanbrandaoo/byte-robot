@@ -81,7 +81,7 @@ function getCommands(commands) {
 }
 
 function fixMessageText(input) {
-  return input.replace('+', '%2B').replace('−', '-').replace('(', '').replace(')', '').replace('√', 'raizquadrada').replace('∛', 'raizcubica').replace('raiz quadrada', 'raizquadrada').replace('raiz cubica', 'raizcubica')
+  return input.replace('+', '%2B').replace('−', '-').replace('(', '').replace(')', '').replace('√', 'raizquadrada ').replace('∛', 'raizcubica ').replace('raiz quadrada', 'raizquadrada ').replace('raiz cubica', 'raizcubica ')
 }
 
 function updateScreen() {

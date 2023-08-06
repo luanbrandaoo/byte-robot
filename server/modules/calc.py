@@ -3,7 +3,7 @@ from text_to_num import alpha2digit
 operator_text = ['mais','menos','dividido','multiplicado','somado','diminuido','dividir','multiplica','com','sem','divisão','vezes','soma','tira','somado','subtraido','divisao','elevado','sobre','X','x','−','×','^','√','raizquadrada','raizcubica','∛']
 operator_simb = ['+','-','/','*','+','-','/','*','+','-','/','*','+','-','+','-','/','**','/','*','*','-','*','**','raizquadrada','raizquadrada','raizcubica','raizquadrada','raizcubica']
 letters = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',' ','  ','ç','~','^','ã','ê','á','à','`','õ','ô','â','é','?','!']
-calc_list = ['mais','menos','dividido','multiplicado','somado','diminuido','dividir','multiplica','com','sem','divisão','vezes','soma','tira','somado','subtraido','divisao','elevado','sobre','+','-','/','*','**',' x ','×','^','√','∛','raizcubica']
+calc_list = ['mais','menos','dividido','multiplicado','somado','diminuido','dividir','multiplica','com','sem','divisão','vezes','soma','tira','somado','subtraido','divisao','elevado','sobre','+','-','/','*','**',' x ','×','^','√','∛','raizcubica','raizquadrada']
 
 def detect_calc(input):
     if input.startswith('quanto') or input.startswith('calcule'):

@@ -50,6 +50,7 @@ def getStyleFile(reqPath):
 def response():
     loading_icon(s)
     input_request = request.args.get("input")
+    input_request = input_request.replace('+', '%2B')
     output_request = requests.get(f'{main_server}/response?input={input_request}').content
 
     send_actions_thread = threading.Thread(target=send_actions, args=(s, output_request.decode()))
