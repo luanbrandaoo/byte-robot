@@ -53,9 +53,9 @@ def action_processor(action,input):
     action_sound = generate_voice(action_text)
     return "print({})".format(action_text), "speak({})".format(action_sound),"emotion(happy)"
   elif 'search(' in action:
-    action_text = wikipedia_search(input)
+    action_text, action_image = wikipedia_search(input)
     action_sound = generate_voice(action_text)
-    return "print({})".format(action_text), "speak({})".format(action_sound),"emotion(neutral)"
+    return "print({})".format(action_text), "speak({})".format(action_sound), "search()" ,"image({})".format(action_image)
   elif 'music(' in action:
     action_text = 'Ainda não consigo reproduzir músicas, mas vou conseguir nos próximos updates.'
     action_sound = generate_voice(action_text)

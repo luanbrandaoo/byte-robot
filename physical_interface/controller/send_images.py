@@ -1,5 +1,7 @@
 from PIL import Image
 from time import sleep
+from io import BytesIO
+import base64
 
 def convert_to_r5g6b5(pixel):
     r, g, b = pixel[0], pixel[1], pixel[2]
@@ -13,7 +15,12 @@ def convert_to_r5g6b5(pixel):
     return pixel_16bits
 
 def image_to_pixel_list(image_path):
-    img = Image.open(image_path)
+
+    try:
+        img = Image.open(image_path)
+    except:
+        img = Image.open(BytesIO(base64.b64decode(image_path)))
+
     img = img.convert("RGB")
 
     pixel_list = list(img.getdata())
