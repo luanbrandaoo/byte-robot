@@ -59,7 +59,7 @@ def crop_face(input_image_path, target_size=(160, 128)):
 
     except Exception as e:
         print(f"Erro ao cortar a imagem: {str(e)}")
-        return error
+        return "error"
 
 wikipedia.set_lang("pt")
 
@@ -108,7 +108,7 @@ def wikipedia_search(query):
         main_image = extract_main_image(query)
         wp_page = wikipedia.page(query)
 
-        summary_short = ". ".join(wp_page.summary.split(". ")[:1]) + "."
+        summary_short = str(". ".join(wp_page.summary.split(". ")[:1]) + ".").replace(' (escutar?·info)','')
 
         cropimage = crop_face(main_image)
 
